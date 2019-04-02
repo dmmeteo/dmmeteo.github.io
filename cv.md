@@ -18,6 +18,7 @@ Flask       | I like this one, because it's simple, lightweight, you can work mo
 Scrapy      | I've try much ways build solutions for aggregating(parsing) data, and I think, that Scrapy - is the best framework wich solves this problems.
 Aiohttp     | I've got some experience with it, and find it very similar with Flask, except async natural. I find Aiohttp very useful to make your IO server faster.
 Celery      | I use Celery as tasks queue for async jobs.
+Serverless  | I've got basic understanding of FASS approach. Also got some experience work with AWS Lambla.
 JavaScript  | I've got experience with JS on frontend also I can build simple backend.
 React       | I've got basic understanding of React. Also I've got less experience with React-Native.
 Vue         | I've got some experience with Vue. I find it great solution for little, simple web-apps.
@@ -34,7 +35,8 @@ Linux       | I've tried many of Linux distributions: Ubuntu, CentOS, Fedora, Ar
 Apache      | I can perform basic setup of hosts, configs to show up the world a site.
 Nginx       | Usually use as reverse proxy server in many projects.
 Gunicorn    | I usually use as Python proxy server with Nginx. I think it's the best solution for web-apps povered by Python.
-REST API    | I like REST approachs. I've build much endpoints. I guess I've got a grasp what is resources, methods, headers, query params and status codes.
+AWS         | I've got some experience with EC2, S3 and Lambda.
+REST API    | I like REST approach. I've build much endpoints. I guess I've got a grasp what is resources, methods, headers, query params and status codes.
 TDD, BDD    | I'm not adept in this approaches, but they are exciting me.
 
 
@@ -42,9 +44,19 @@ TDD, BDD    | I'm not adept in this approaches, but they are exciting me.
 
 Neme        | Description
 ---         | ---
-vim
-tmux
-Supervisor
+Vim         | My favorite IDE for now. I use it for all projects, on daily basis. I've extend Vim with SpaceVim distribution, that why i call it IDE.
+Tmux        | Usually use in bundle with Vim. I can't imagine work in terminal without tmux.
+IPython     | Usually use this powerful tool for quik tests some language constructions.
+VSCode      | In the past it was my favorite IDE.
+SublimeText | I like to use this handy and fast IDE for small tasks. In the past I used it on daily basis.
+JetBrains   | In the past I've use WebStorm, PhpStorm, PyCharm and CLion, but this apps are so hardweight, and not convenient for me.
+Supervisor  | I used it as processes controller and runner. 
+Fabric      | I used it to automate the deployment process.
+Docker      | I can build an image and create docker-compose config. I use it on daily basis.
+Git         | Use it everywhere on daily basis with Github.
+Mercurial   | I've much experience with this SCV, but prefer to use Git.
+Heroku      | Usually use for serve my pet-projects.
+Docsify     | I use as render tool markdown files for documentation of projects.
 
 
 # Projects
