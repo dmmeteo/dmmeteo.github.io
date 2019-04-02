@@ -69,14 +69,25 @@ Docsify     | I use as render tool markdown files for documentation of projects.
 
 # Education
 
-- bla-bla
+University: Volodymyr Vynnychenko Central Ukrainian State Pedagogical University
+Degree: Master's Degree in Geography and Economics
+Study years: 2008-2013
 
 
 # Languages
 
-- English
-- Russian
-- Ukrainian
+Neme        | Description
+---         | ---
+English     | Intermediate
+Ukrainian   | Native
+Russian     | First language
 
 
 # Hobbies
+
+- programming
+- books
+- tech new
+- banking
+- films
+
