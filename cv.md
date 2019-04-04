@@ -10,9 +10,9 @@ Work position: Junior Python/Django Developer & Tech support
 
 # Skills
 
-Neme        | Description
+Name        | Description
 ---         | ---
-Python      | Python is not my first programming language, but it my favorit now. I use it mostly for build web-apps and automation of trivial things. Also, I work with Python standard library as well. I'am always try to do everything according PEP8(I use isort, flake8), implement design patterns and cover my code by unit tests.
+Python      | Python is not my first programming language, but it my favorit now. I use it mostly for build web-apps and automatisation of trivial things. Also, I work with Python standard library as well. I'am always try to do everything according PEP8(I use isort, flake8), implement design patterns and cover my code by unit tests.
 Django      | I've got much experience with Django REST Framework. I like this framework because you get all what you need from the box, and extensive library of packages.
 Flask       | I like this one, because it's simple, lightweight, you can work more with core Python when developing with Flask, also it's great solution for scalable projects. I think, that Falsk - is my favorit web-framework.
 Scrapy      | I've try much ways build solutions for aggregating(parsing) data, and I think, that Scrapy - is the best framework wich solves this problems.
