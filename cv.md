@@ -20,61 +20,61 @@ Work position: Junior Python/Django Developer & Tech support
 
 Name        | Description
 ---         | ---
-Python      | Python is not my first programming language, but it my favorit now. I use it mostly for build web-apps and automatisation of trivial things. Also, I work with Python standard library as well. I'am always try to do everything according PEP8(I use isort, flake8), implement design patterns and cover my code by unit tests.
-Django      | I've got much experience with Django REST Framework. I like this framework because you get all what you need from the box, and extensive library of packages.
-Flask       | I like this one, because it's simple, lightweight, you can work more with core Python when developing with Flask, also it's great solution for scalable projects. I think, that Falsk - is my favorit web-framework.
-Scrapy      | I've try much ways build solutions for aggregating(parsing) data, and I think, that Scrapy - is the best framework wich solves this problems.
-Aiohttp     | I've got some experience with it, and find it very similar with Flask, except async natural. I find Aiohttp very useful to make your IO server faster.
+Python      | Python is not my first programming language, but it my favorite now. Mostly I usemit for building web-apps and automatization of trivial things. Also I work with Python standard library as well. I always try to do everything according PEP8( using isort, flake8), to implement design patterns and to cover my code by unit tests.
+Django      | I've got much experience with Django REST Framework. I like this framework because you get all what you need from the box and extensive library of packages.
+Flask       | I like this one, because it's simple and lightweight, you can work more with core Python when developing with Flask, also it's a great solution for scalable projects. I think that Falsk is my favorite web-framework.
+Scrapy      | I've tried many ways of building solutions for aggregating(parsing) data and I think that Scrapy is the best framework wich solves this problems.
+Aiohttp     | I've got some experience with it and find it very similar with Flask, except it is async. I find Aiohttp very useful to make your IO server faster.
 Celery      | I use Celery as tasks queue for async jobs.
-Serverless  | I've got basic understanding of FASS approach. Also got some experience work with AWS Lambla.
-JavaScript  | I've got experience with JS on frontend also I can build simple backend.
-React       | I've got basic understanding of React. Also I've got less experience with React-Native.
+Serverless  | I've got basic understanding of FASS approach. Also got some experience in work with AWS Lambda.
+JavaScript  | I've got experience with JS on frontend also I can build simple backend using it.
+React       | I've got basic understanding of React and some less experience with React-Native.
 Vue         | I've got some experience with Vue. I find it great solution for little, simple web-apps.
-PHP         | I can write simple things in pure PHP, but I actually do it rarely.
-Selenium    | I've got experience of work with Selenium-python and Nightwatch.js.
-MongoDB     | I've got same experience with MongoDB. It useful in bundle with Scrapy.
-CouchDB     | It was my first NoSQL DB. The CouchDB has very specific approach to solve specific problems, not convenient for common tasks.
+PHP         | I can write simple things in pure PHP, but I actually do it quite rarely.
+Selenium    | I've got some experience working with Selenium-python and Nightwatch.js.
+MongoDB     | I've got some experience with MongoDB. It is useful in bundle with Scrapy.
+CouchDB     | It was my first NoSQL DB. Though, CouchDB has very specific approach to solve specific problems, not convenient for common tasks.
 RethinkDB   | I've got much experience with it. I used RethinkDB as convenient DB for work in cluster with python backend.
 MySQL       | I can work with raw SQL, CRUD operations and basic setup on a server.
-PostgreSQL  | I've got experience same like with MySQL.
+PostgreSQL  | My experience with PostgreSQL same like with MySQL.
 Memcached   | Mostly used as cache back-end.
-Redis       | Used as cache backend, when needed solution without hash tables data structure.
-Bash        | Sometimes I've writing scripts to automation of some routines, scripts of docker entrypoints and scripts for dotfiles management.
-Linux       | I've tried many of Linux distributions: Ubuntu, CentOS, Fedora, ArchLinux, LinuxMint, Debian, Kali, Xubuntu. My favorite now is Xubuntu, becouse it's lightweight, simple and convinient in my case.
-Apache      | I can perform basic setup of hosts, configs to show up the world a site.
+Redis       | Used as cache backend when solution without hash tables data structure was needed.
+Bash        | Constantly I am writing scripts for automatization of some routines, scripts of docker entrypoints and scripts for dotfiles management.
+Linux       | I've tried many of Linux distributions: Ubuntu, CentOS, Fedora, ArchLinux, LinuxMint, Debian, Kali, Xubuntu. For now my favorite is Xubuntu because it's lightweight, simple and convinient for me.
+Apache      | I can perform basic setup of hosts, configs to roll out a site.
 Nginx       | Usually use as reverse proxy server in many projects.
 Gunicorn    | I usually use as Python proxy server with Nginx. I think it's the best solution for web-apps povered by Python.
 AWS         | I've got some experience with EC2, S3 and Lambda.
-REST API    | I like REST approach. I've build much endpoints. I guess I've got a grasp what is resources, methods, headers, query params and status codes.
-TDD, BDD    | I'm not adept in this approaches, but they are exciting me.
+REST API    | I like REST approach. I've build much endpoints. I guess I have enough experience in things like resources, methods, headers, query params and status codes.
+TDD, BDD    | I'm not adept in this approaches, but they excite me alot.
 
 
 # Development tools
 
 Neme        | Description
 ---         | ---
-Vim         | My favorite IDE for now. I use it for all projects, on daily basis. I've extend Vim with SpaceVim distribution, that why i call it IDE.
+Vim         | My favorite IDE for now. I use it for all projects on daily basis. I've extend Vim with SpaceVim distribution that is why i call it IDE.
 Tmux        | Usually use in bundle with Vim. I can't imagine work in terminal without tmux.
-IPython     | Usually use this powerful tool for quik tests some language constructions.
-VSCode      | In the past it was my favorite IDE.
-SublimeText | I like to use this handy and fast IDE for small tasks. In the past I used it on daily basis.
-JetBrains   | In the past I've use WebStorm, PhpStorm, PyCharm and CLion, but this apps are so hardweight, and not convenient for me.
-Supervisor  | I used it as processes controller and runner. 
-Fabric      | I used it to automate the deployment process.
+IPython     | Usually use this powerful tool for quik tests of some language constructions.
+VSCode      | It was my favorite IDE in the past.
+SublimeText | I like to use this handy and fast IDE for small tasks. I've used it on daily basis.
+JetBrains   | I used WebStorm, PhpStorm, PyCharm and CLion but this apps are so hardweight and not convenient for me.
+Supervisor  | I use it as processes controller and runner. 
+Fabric      | I use it to automate the deployment process.
 Docker      | I can build an image and create docker-compose config. I use it on daily basis.
 Git         | Use it everywhere on daily basis with Github.
-Mercurial   | I've much experience with this SCV, but prefer to use Git.
-Heroku      | Usually use for serve my pet-projects.
+Mercurial   | I have much experience with this SCV but prefer to use Git.
+Heroku      | Usually use to serve my pet-projects.
 Trello      | I use it on daily basis for all my aspects of life which need to be structured.
 Docsify     | I use as render tool markdown files for documentation of projects.
-Jenkins     | I've got some experience with configuration this automation framework.
+Jenkins     | I've got some experience with configuration this automatization framework.
 
 
 # Projects
 
 ### [Shifton](https://shifton.com)
 
-Overview: Online tool is designed to cut time and effort spent on workforce scheduling.
+Overview: Online tool designed to cut time and effort spent on workforce scheduling.
 
 Duration: September 2018 - March 2019
 
@@ -116,7 +116,7 @@ Achievements:
 
 ### [Bulkness](http://bulkness.com)
 
-Overview: Hightload service wich implement bulk sms gateway, powered by SMPP(Short Message Peer-to-Peer) protocol.
+Overview: Highload service wich implement bulk sms gateway, powered by SMPP(Short Message Peer-to-Peer) protocol.
 
 Duration: April 2017 - May 2018
 
@@ -138,11 +138,11 @@ Achievements:
 
 ### [Ringeron](https://ringeron.com)
 
-Overview: CRM system oriented on call centers. Service include telephony, chat, email clients and some automation tools business process.
+Overview: CRM system oriented on call centers. Service include telephony, chat, email clients and some automatization tools business process.
 
 Duration: January 2016 - April 2017
 
-Project role: back-end developer & qa automation engineer
+Project role: back-end developer & qa automatization engineer
 
 Project team size: 8 people
 
@@ -173,7 +173,7 @@ Achievements:
 
 ### Terminal (My first project in programming)
 
-Overview: Terminal is a static service which provides a simple and convenient tool for operators support call center in PrivatBank.
+Overview: Terminal is a static service which provides a simple and convenient tool for operators of support call center in PrivatBank.
 
 Duration: April 2015 – March 2016
 
