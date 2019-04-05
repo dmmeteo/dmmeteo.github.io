@@ -1,3 +1,11 @@
+<div align="center">
+
+# Dmitry Sichkar {docsify-ignore}
+
+</div>
+
+---
+
 # Work experience
 
 - TPR: (April 2017 - March 2019)<br>
@@ -64,7 +72,7 @@ Jenkins     | I've got some experience with configuration this automation framew
 
 # Projects
 
-[**Shifton**](https://shifton.com)
+### [Shifton](https://shifton.com)
 
 Overview: Online tool is designed to cut time and effort spent on workforce scheduling.
 
@@ -86,9 +94,8 @@ Achievements:
 - Implement new UI features
 - Implement SEO features
 
----
 
-[**Miabellebaby**](https://www.miabellebaby.com)
+### [Miabellebaby](https://www.miabellebaby.com)
 
 Overview: Dropshipping service. Online shop for Mother and Daughter, powered by Shopify business platform.
 
@@ -106,9 +113,8 @@ Achievements:
 - Fix UI
 - Implement SEO features
 
----
 
-[**Bulkness**](http://bulkness.com)
+### [Bulkness](http://bulkness.com)
 
 Overview: Hightload service wich implement bulk sms gateway, powered by SMPP(Short Message Peer-to-Peer) protocol.
 
@@ -129,9 +135,8 @@ Achievements:
 - Implement new reporsts features
 - Implement new UI features
 
----
 
-[**Ringeron**](https://ringeron.com)
+### [Ringeron](https://ringeron.com)
 
 Overview: CRM system oriented on call centers. Service include telephony, chat, email clients and some automation tools business process.
 
@@ -147,9 +152,8 @@ Achievements:
 - Automated functional tests
 - Implement knowledge base
 
----
 
-[**SmsCoin**](https://smscoin.com)
+### [SmsCoin](https://smscoin.com)
 
 Overview: SMS payment solutions for web sites. The service can help monetize websites, via sms payments, without dipping in payment systems and without programming skills.
 
@@ -166,9 +170,8 @@ Achievements:
 - Participated in migration to another datacenter
 - Implement new features for site admin
 
----
 
-**Terminal (My first project in programming)**
+### Terminal (My first project in programming)
 
 Overview: Terminal is a static service which provides a simple and convenient tool for operators support call center in PrivatBank.
 
@@ -209,6 +212,26 @@ Russian     | First language
 - programming
 - books
 - tech new
-- banking
 - films
 
+<br>
+
+---
+
+<div align="center">
+
+[![Github](https://icongr.am/simple/github.svg?colored&size=26)](https://github.com/dmmeteo) &nbsp;
+[![Twitter](https://icongr.am/simple/twitter.svg?colored&size=26)](http://twitter.com/dmmeteo) &nbsp;
+[![Instagram](https://icongr.am/simple/instagram.svg?colored&size=26)](http://instagram.com/dmmeteo) &nbsp;
+[![Facebook](https://icongr.am/simple/facebook.svg?colored&size=26)](https://facebook.com/dmmeteo) &nbsp;
+[![LinkedIn](https://icongr.am/simple/linkedin.svg?colored&size=26)](https://linkedin.com/in/dmmeteo) &nbsp;
+[![Stackoverflow](https://icongr.am/simple/stackoverflow.svg?colored&size=26)](https://stackoverflow.com/dmmeteo) &nbsp;
+[![Medium](https://icongr.am/fontawesome/medium.svg?colored&size=26)](https://medium.com/@dmmeteo) &nbsp;
+[![Reddit](https://icongr.am/simple/reddit.svg?colored&size=26)](https://reddit.com/user/dmmeteo) &nbsp;
+[![Dev.to](https://icongr.am/simple/devto.svg?colored&size=26)](https://dev.to/dmmeteo) &nbsp;
+[![Gmail](https://icongr.am/simple/gmail.svg?colored&size=26)](mailto:dmmeteo@gmail.com) &nbsp;
+[![Telegram](https://icongr.am/simple/telegram.svg?colored&size=26)](https://t.me/dmmeteo) &nbsp;
+
+Powered by [docsify.js](https://docsify.js.org) and [docsify-themeable](https://github.com/jhildenbiddle/docsify-themeable).
+
+</div>
