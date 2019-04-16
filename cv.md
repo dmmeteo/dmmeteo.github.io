@@ -16,6 +16,15 @@ Work position: Python Developer
 Work position: Junior Python/Django Developer & Tech support
 
 
+# Languages
+
+Neme        | Description
+---         | ---
+English     | Intermediate
+Ukrainian   | Native
+Russian     | First language
+
+
 # Skills
 
 Name        | Description
@@ -197,22 +206,6 @@ Degree: Master's Degree in Geography and Economics
 
 Study years: 2008-2013
 
-
-# Languages
-
-Neme        | Description
----         | ---
-English     | Intermediate
-Ukrainian   | Native
-Russian     | First language
-
-
-# Hobbies
-
-- programming
-- books
-- tech new
-- films
 
 <br>
 
