@@ -81,11 +81,39 @@ Jenkins     | I've got some experience with configuration this automatization fr
 
 # Projects
 
+### [CashStar](https://cashstar.com)
+Overview: Big service which provide gift cards for customers, b2b etc. 
+
+Duration: June 2019 - present
+
+Project role: python developer
+
+Project team size: 80+ people
+
+Tech stack: Python3, Django, Celery, Djnago REST Framework, MySQL, Redis, Memcached, Docker, Jenkins, AWS
+
+
+### [Datintell](https://datintell.com)
+Overview: Ads service. Helpful to build multiple campaign in different services like facebook, google etc.
+
+Duration: April 2019 - June 2019
+
+Project role: python developer
+
+Project team size: 16 people
+
+Tech stack: Python3, Django, Celery, Djnago REST Framework, PostgreSQL, Redis, Memcached, Docker 
+
+Achievements:
+- Refactor facebook adapter
+- Dockerize few services
+
+
 ### [Shifton](https://shifton.com)
 
 Overview: Online tool designed to cut time and effort spent on workforce scheduling.
 
-Duration: September 2018 - March 2019
+Duration: September 2018 - May 2019
 
 Project role: full-stack developer
 
@@ -98,7 +126,6 @@ Achievements:
 - Refactor old back-end architecture and models
 - Implement migration to Python2 latest and CouchDB2
 - Participated on refactoring old front-end
-- Implement new functionality
 - Implement e2e testing system
 - Implement new UI features
 - Implement SEO features
