@@ -8,6 +8,14 @@
 
 # Work experience
 
+- SPD-Ukraine: (June 2019 - present)<br>
+Work position: Python Developer
+
+
+- Star Navi: (April 2019 - June 2019)<br>
+Work position: Python Developer
+
+
 - TPR: (April 2017 - March 2019)<br>
 Work position: Python Developer
 

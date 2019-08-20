@@ -18,5 +18,6 @@ Powered by [docsify.js](https://docsify.js.org) and [docsify-themeable](https://
 
 
 [Go to CV](cv)
+[Resume](/Resume_Dmitry_Sichkar.pdf ':ignore')
 [About me](README)
 
