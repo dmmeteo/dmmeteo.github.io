@@ -1,0 +1,24 @@
+---
+- hosts: all
+  become: true
+  vars:
+    wg_compose_path: /opt/wireguard-server/compose.yml
+
+  tasks:
+    - name: Update apt and install docker-ce
+      apt:
+        name: docker-ce
+        state: latest
+        update_cache: true
+    - name: Check docker & compose versions
+      shell: |
+        docker --version
+        docker compose version
+    - name: Copy WireGuard config file with owner and permissions
+      copy:
+        src: "wireguard-compose.yml"
+        dest: "{{wg_compose_path}}"
+    - name: WireGuard server restart
+      shell: |
+        docker compose -f {{wg_compose_path}} down
+        docker compose -f {{wg_compose_path}} up -d --pull always --quiet-pull

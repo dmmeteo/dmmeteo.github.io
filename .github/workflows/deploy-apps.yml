@@ -1,0 +1,48 @@
+name: Deploy Apps
+
+on:
+  push:
+    branches:
+      - master
+  workflow_dispatch:
+
+jobs:
+  deploy-dev:
+    runs-on: ubuntu-latest
+    environment: development
+    env:
+      # Build level envs
+      TEMP_FILES: .github/files
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Create temp files folder
+        run: mkdir ${{ env.TEMP_FILES }}
+      - name: Check docker & compose versions
+        run: |
+          docker --version
+          docker compose version
+      - name: Create WireGuard compose config file
+        run: |
+          docker compose \
+            --file wireguard/compose.yml \
+            convert > ${{ env.TEMP_FILES }}/wireguard-compose.yml
+        env:
+          WG_SERVERURL: ${{ secrets.WG_SERVERURL }}
+      - name: Check WireGuard compose config file
+        run: |
+          docker compose \
+            --file ${{ env.TEMP_FILES }}/wireguard-compose.yml \
+            config
+      - name: Run playbook
+        uses: dawidd6/action-ansible-playbook@v2
+        with:
+          playbook: ansible-deploy.yml
+          directory: .github/
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          inventory: |
+            [all]
+            ${{ secrets.ANSIBLE_INVENTORY_HOST }}
+          options: |
+            --user root
+            --verbose
