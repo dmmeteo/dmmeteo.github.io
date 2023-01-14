@@ -7,12 +7,19 @@ on:
   workflow_dispatch:
 
 jobs:
-  deploy-dev:
+  deploy-apps:
     runs-on: ubuntu-latest
-    environment: development
     env:
       # Build level envs
       TEMP_FILES: .github/files
+      LETSENCTYPT_EMAIL: ${{ secrets.LETSENCTYPT_EMAIL }}
+      WGUI_EMAIL: ${{ secrets.LETSENCTYPT_EMAIL }}
+      WGUI_USERNAME: ${{ secrets.WGUI_USERNAME }}
+      WGUI_PASSWORD: ${{ secrets.WGUI_PASSWORD }}
+      WGUI_SMTP_HOSTNAME: ${{ secrets.WGUI_SMTP_HOSTNAME }}
+      WGUI_SMTP_PORT: ${{ secrets.WGUI_SMTP_PORT }}
+      WGUI_SMTP_USERNAME: ${{ secrets.WGUI_SMTP_USERNAME }}
+      WGUI_SMTP_PASSWORD: ${{ secrets.WGUI_SMTP_PASSWORD }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -22,17 +29,17 @@ jobs:
         run: |
           docker --version
           docker compose version
-      - name: Create WireGuard compose config file
+      - name: Create docker compose config file
         run: |
           docker compose \
-            --file wireguard/compose.yml \
-            convert > ${{ env.TEMP_FILES }}/wireguard-compose.yml
+            --file server-apps/compose.yml \
+            convert > ${{ env.TEMP_FILES }}/compose.yml
         env:
           WG_SERVERURL: ${{ secrets.WG_SERVERURL }}
-      - name: Check WireGuard compose config file
+      - name: Check docker compose config file
         run: |
           docker compose \
-            --file ${{ env.TEMP_FILES }}/wireguard-compose.yml \
+            --file ${{ env.TEMP_FILES }}/compose.yml \
             config
       - name: Run playbook
         uses: dawidd6/action-ansible-playbook@v2

@@ -1,0 +1,76 @@
+version: '3.9'
+services:
+  wireguard:
+    image: linuxserver/wireguard:latest
+    container_name: wireguard
+    cap_add:
+      - NET_ADMIN
+      - SYS_MODULE
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/London
+      - SERVERURL=${WG_SERVERURL}
+      - SERVERPORT=51820
+      - PEERS=1
+      - PEERDNS=auto
+      - INTERNAL_SUBNET=10.13.13.0
+      - ALLOWEDIPS=0.0.0.0/0
+    volumes:
+      - /opt/server-apps/wireguard_config:/config
+      - /lib/modules:/lib/modules
+    sysctls:
+      - net.ipv4.conf.all.src_valid_mark=1
+    restart: unless-stopped
+    labels:
+      - "traefik.enable=true"
+      # UDP Routers
+      - "traefik.udp.routers.wireguard-udp.entrypoints=streaming"
+      # UDP Services
+      - "traefik.udp.routers.wireguard-udp.service=wireguard-udp-svc"
+      - "traefik.udp.services.wireguard-udp-svc.loadbalancer.server.port=51820"
+  wireguard-ui:
+    image: ngoduykhanh/wireguard-ui:latest
+    container_name: wireguard-ui
+    environment:
+      - WGUI_LISTEN_PORT=5000
+      - WGUI_USERNAME=${WGUI_USERNAME}
+      - WGUI_PASSWORD=${WGUI_PASSWORD}
+      # - WGUI_CONFIG_FILE_PATH=/config/wg0.conf
+      # - EMAIL_FROM_ADDRESS=${WGUI_EMAIL}
+      # - SMTP_HOSTNAME=${WGUI_SMTP_HOSTNAME}
+      # - SMTP_PORT=${WGUI_SMTP_PORT}
+      # - SMTP_USERNAME=${WGUI_SMTP_USERNAME}
+      # - SMTP_PASSWORD=${WGUI_SMTP_PASSWORD}
+    volumes:
+      - /opt/server-apps/wireguard-ui_db:/app/db
+      - /opt/server-apps/wireguard_config:/etc/wireguard
+    labels:
+      - "traefik.enable=true"
+      # HTTP Routers
+      - "traefik.http.routers.wireguard-ui.entrypoints=websecure"
+      - "traefik.http.routers.wireguard-ui.rule=Host(`${WG_SERVERURL}`)"
+      # HTTP Services
+      - "traefik.http.routers.wireguard-ui.tls.certresolver=mytlschallenge"
+      - "traefik.http.services.wireguard-ui.loadbalancer.server.port=5000"
+    restart: unless-stopped
+    depends_on:
+      - wireguard
+
+  traefik:
+    image: traefik:v2.9.6
+    container_name: traefik
+    command:
+      - "--api.insecure=true"
+      - "--providers.docker=true"
+      - "--entrypoints.web.address=:80"
+      - "--entrypoints.websecure.address=:443"
+      - "--entryPoints.streaming.address=:51820/udp"
+      - "--certificatesresolvers.mytlschallenge.acme.tlschallenge=true"
+      - "--certificatesresolvers.mytlschallenge.acme.email=${LETSENCTYPT_EMAIL}"
+      - "--certificatesresolvers.mytlschallenge.acme.storage=/letsencrypt/acme.json"
+    network_mode: host
+    restart: unless-stopped
+    volumes:
+      - /opt/wireguard/letsencrypt:/letsencrypt
+      - /var/run/docker.sock:/var/run/docker.sock

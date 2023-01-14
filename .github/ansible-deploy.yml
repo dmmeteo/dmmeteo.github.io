@@ -2,9 +2,22 @@
 - hosts: all
   become: true
   vars:
-    wg_compose_path: /opt/wireguard-server/compose.yml
+    config_path: /opt/server-apps
+    compose_file_path: "{{config_path}}/compose.yml"
 
   tasks:
+    - name: Set up the Docker repository
+      shell: |
+        apt-get update
+        apt-get install -y ca-certificates curl gnupg lsb-release
+        mkdir -p /etc/apt/keyrings
+        curl -fsSL https://download.docker.com/linux/ubuntu/gpg | gpg --dearmor --yes -o /etc/apt/keyrings/docker.gpg
+        echo \
+          "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
+          $(lsb_release -cs) stable" | tee /etc/apt/sources.list.d/docker.list > /dev/null
+        chmod a+r /etc/apt/keyrings/docker.gpg
+        apt-get update
+        apt-get install -y docker-ce docker-ce-cli containerd.io docker-compose-plugin
     - name: Update apt and install docker-ce
       apt:
         name: docker-ce
@@ -14,11 +27,18 @@
       shell: |
         docker --version
         docker compose version
-    - name: Copy WireGuard config file with owner and permissions
+    - name: Create project folder
+      file:
+        path: "{{config_path}}"
+        state: directory
+        owner: root
+        group: root
+        mode: 0755
+    - name: Copy config file with owner and permissions
       copy:
-        src: "wireguard-compose.yml"
-        dest: "{{wg_compose_path}}"
+        src: "compose.yml"
+        dest: "{{compose_file_path}}"
     - name: WireGuard server restart
       shell: |
-        docker compose -f {{wg_compose_path}} down
-        docker compose -f {{wg_compose_path}} up -d --pull always --quiet-pull
+        docker compose -f {{compose_file_path}} down
+        docker compose -f {{compose_file_path}} up -d --pull always --quiet-pull
