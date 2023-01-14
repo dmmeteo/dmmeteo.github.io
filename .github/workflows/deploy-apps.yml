@@ -12,14 +12,9 @@ jobs:
     env:
       # Build level envs
       TEMP_FILES: .github/files
-      LETSENCTYPT_EMAIL: ${{ secrets.LETSENCTYPT_EMAIL }}
-      WGUI_EMAIL: ${{ secrets.LETSENCTYPT_EMAIL }}
-      WGUI_USERNAME: ${{ secrets.WGUI_USERNAME }}
+      WGUI_HOST: ${{ vars.WGUI_HOST }}
       WGUI_PASSWORD: ${{ secrets.WGUI_PASSWORD }}
-      WGUI_SMTP_HOSTNAME: ${{ secrets.WGUI_SMTP_HOSTNAME }}
-      WGUI_SMTP_PORT: ${{ secrets.WGUI_SMTP_PORT }}
-      WGUI_SMTP_USERNAME: ${{ secrets.WGUI_SMTP_USERNAME }}
-      WGUI_SMTP_PASSWORD: ${{ secrets.WGUI_SMTP_PASSWORD }}
+      LETSENCTYPT_EMAIL: ${{ vars.LETSENCTYPT_EMAIL }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
