@@ -1,4 +1,4 @@
-version: "3.8"
+version: "3.9"
 
 services:
   wireguard:
@@ -28,9 +28,34 @@ services:
       - "traefik.http.routers.wireguard-ui.rule=Host(`${WGUI_HOST}`)"
       # HTTP Services
       - "traefik.http.routers.wireguard-ui.tls.certresolver=letsencrypt"
-      - "traefik.http.services.wireguard-ui.loadbalancer.server.port=51821"
+      - "traefik.http.services.wireguard-ui-svc.loadbalancer.server.port=51821"
     volumes:
       - /opt/server-apps/wireguard:/etc/wireguard
+
+  kasm:
+    image: lscr.io/linuxserver/kasm:latest
+    container_name: kasm
+    privileged: true
+    environment:
+      - KASM_PORT=443
+      - TZ=Europe/Kyiv
+    labels:
+      - "traefik.enable=true"
+      # HTTP Routers
+      - "traefik.http.routers.kasm.entrypoints=websecure"
+      - "traefik.http.routers.kasm.rule=Host(`${KASM_HOST}`)"
+      # HTTP Services
+      - "traefik.http.routers.kasm.tls=true"
+      - "traefik.http.routers.kasm.tls.certresolver=letsencrypt"
+      - "traefik.http.services.kasm-svc.loadbalancer.server.port=443"
+      - "traefik.http.services.kasm-svc.loadbalancer.server.scheme=https"
+    volumes:
+      - /opt/server-apps/kasm/data:/opt
+      - /opt/server-apps/kasm/profiles:/profiles
+    # Uncomment if you want to access the webui from outside the container
+    # ports:
+    #   - 3000:3000
+    restart: unless-stopped
 
   traefik:
     image: traefik:v2.9.6
@@ -43,11 +68,16 @@ services:
       - "--entrypoints.websecure.address=:443"
       - "--entryPoints.streaming.address=:51820/udp"
       - "--entrypoints.web.http.redirections.entryPoint.to=websecure"
+      - "--entrypoints.web.http.redirections.entryPoint.scheme=https"
       # SSL Certificates
       - "--certificatesresolvers.letsencrypt.acme.tlschallenge=true"
       - "--certificatesresolvers.letsencrypt.acme.email=${LETSENCTYPT_EMAIL}"
       - "--certificatesresolvers.letsencrypt.acme.httpchallenge.entrypoint=web"
       - "--certificatesresolvers.letsencrypt.acme.storage=/letsencrypt/acme.json"
+      # Kasm (insecure connection between Traefik and the backend servers)
+      - "--serverstransport.insecureskipverify"
+      - "--log=true"
+      - "--log.level=DEBUG"
     network_mode: host
     restart: unless-stopped
     volumes:

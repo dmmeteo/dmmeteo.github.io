@@ -13,6 +13,7 @@ jobs:
       # Build level envs
       TEMP_FILES: .github/files
       WGUI_HOST: ${{ vars.WGUI_HOST }}
+      KASM_HOST: ${{ vars.KASM_HOST }}
       WGUI_PASSWORD: ${{ secrets.WGUI_PASSWORD }}
       LETSENCTYPT_EMAIL: ${{ vars.LETSENCTYPT_EMAIL }}
     steps:
