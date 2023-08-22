@@ -57,6 +57,33 @@ services:
     #   - 3000:3000
     restart: unless-stopped
 
+  code-server:
+    image: lscr.io/linuxserver/code-server:latest
+    container_name: code-server
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Etc/UTC
+      - PASSWORD=${CODE_SERVER_PASSWORD}
+      - SUDO_PASSWORD=${CODE_SERVER_PASSWORD}
+      - PROXY_DOMAIN=${CODE_SERVER_HOST}
+      - DEFAULT_WORKSPACE=/config/workspace
+    labels:
+      - "traefik.enable=true"
+      # HTTP Routers
+      - "traefik.http.routers.code-server.entrypoints=websecure"
+      - "traefik.http.routers.code-server.rule=Host(`${CODE_SERVER_HOST}`)"
+      # HTTP Services
+      - "traefik.http.routers.code-server.tls=true"
+      - "traefik.http.routers.code-server.tls.certresolver=letsencrypt"
+      - "traefik.http.services.code-server-svc.loadbalancer.server.port=8443"
+      - "traefik.http.services.code-server-svc.loadbalancer.server.scheme=https"
+    volumes:
+      - ./code-server/config:/config
+    ports:
+      - 8443:8443
+    restart: unless-stopped
+
   traefik:
     image: traefik:v2.9.6
     container_name: traefik
