@@ -41,13 +41,12 @@ services:
     labels:
       - "traefik.enable=true"
       # HTTP Routers
-      - "traefik.http.routers.jupyter.entrypoints=websecure"
+      - "traefik.http.routers.jupyter.entrypoints=web,websecure"
       - "traefik.http.routers.jupyter.rule=Host(`${JUPYTER_HOST}`)"
       # HTTP Services
       - "traefik.http.routers.jupyter.tls=true"
       - "traefik.http.routers.jupyter.tls.certresolver=letsencrypt"
       - "traefik.http.services.jupyter-svc.loadbalancer.server.port=8888"
-      - "traefik.http.services.jupyter-svc.loadbalancer.server.scheme=https"
     volumes:
       - /opt/server-apps/jupyter/config:/home/jovyan/.jupyter
       - /opt/server-apps/jupyter/workspace:/home/jovyan/work
