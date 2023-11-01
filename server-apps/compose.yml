@@ -39,7 +39,8 @@ services:
     environment:
       - CHOWN_HOME=yes
       - CHOWN_HOME_OPTS='-R'
-    command: "start-notebook.sh --NotebookApp.password=${JUPYTER_PASSWORD}"
+    # TODO: password must be hashed
+    # command: "start-notebook.sh --NotebookApp.password=${JUPYTER_PASSWORD}"
     labels:
       - "traefik.enable=true"
       # HTTP Routers
