@@ -37,7 +37,9 @@ services:
     container_name: jupyter
     restart: unless-stopped
     environment:
-      - AUTHENTICATE_VIA_JUPYTER=${JUPYTER_PASSWORD}
+      - CHOWN_HOME=yes
+      - CHOWN_HOME_OPTS='-R'
+    command: "start-notebook.sh --NotebookApp.password=${JUPYTER_PASSWORD}"
     labels:
       - "traefik.enable=true"
       # HTTP Routers
@@ -49,7 +51,9 @@ services:
       - "traefik.http.services.jupyter-svc.loadbalancer.server.port=8888"
     volumes:
       - /opt/server-apps/jupyter/config:/home/jovyan/.jupyter
-      - /opt/server-apps/jupyter/workspace:/home/jovyan/work
+      - /opt/server-apps/jupyter/work:/home/jovyan/work
+      - /opt/server-apps/jupyter/datasets:/home/jovyan/datasets
+      - /opt/server-apps/jupyter/modules:/home/jovyan/modules
     ports:
       - 8888:8888
 
