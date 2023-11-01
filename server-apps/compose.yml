@@ -32,44 +32,11 @@ services:
     volumes:
       - ./wireguard:/etc/wireguard
 
-version: "3.9"
-
-services:
-  wireguard:
-    image: weejewel/wg-easy:latest
-    container_name: wireguard
-    restart: unless-stopped
-    cap_add:
-      - NET_ADMIN
-      - SYS_MODULE
-    environment:
-      # Change the server's hostname (clients will connect to):
-      - WG_HOST=${WGUI_HOST}
-      # Change the Web UI Password:
-      - PASSWORD=${WGUI_PASSWORD}
-    sysctls:
-      - net.ipv4.ip_forward=1
-      - net.ipv4.conf.all.src_valid_mark=1
-    labels:
-      - "traefik.enable=true"
-      # UDP Routers
-      - "traefik.udp.routers.wireguard-udp.entrypoints=streaming"
-      # UDP Services
-      - "traefik.udp.routers.wireguard-udp.service=wireguard-udp-svc"
-      - "traefik.udp.services.wireguard-udp-svc.loadbalancer.server.port=51820"
-      # HTTP Routers
-      - "traefik.http.routers.wireguard-ui.entrypoints=web,websecure"
-      - "traefik.http.routers.wireguard-ui.rule=Host(`${WGUI_HOST}`)"
-      # HTTP Services
-      - "traefik.http.routers.wireguard-ui.tls.certresolver=letsencrypt"
-      - "traefik.http.services.wireguard-ui-svc.loadbalancer.server.port=51821"
-    volumes:
-      - /opt/server-apps/wireguard:/etc/wireguard
-
   jupyter:
-    image: jupyter/minimal-notebook:latest
-    container_name: jupyter
+    image: mltooling/ml-workspace:latest
+    container_name: ml-workspace
     restart: unless-stopped
+    shm_size: 512m
     environment:
       - AUTHENTICATE_VIA_JUPYTER=${JUPYTER_PASSWORD}
     labels:
@@ -83,10 +50,9 @@ services:
       - "traefik.http.services.jupyter-svc.loadbalancer.server.port=8888"
       - "traefik.http.services.jupyter-svc.loadbalancer.server.scheme=https"
     volumes:
-      - /opt/server-apps/jupyter/config:/config
-      - /opt/server-apps/jupyter/workspace:/home/jovyan/work
+      - ./jupyter/workspace:/workspace
     ports:
-      - 8888:8888
+      - 8080:8080
 
   traefik:
     image: traefik:v2.9.6
