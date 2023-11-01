@@ -32,56 +32,29 @@ services:
     volumes:
       - /opt/server-apps/wireguard:/etc/wireguard
 
-  kasm:
-    image: lscr.io/linuxserver/kasm:latest
-    container_name: kasm
-    privileged: true
+  jupyter:
+    image: jupyter/minimal-notebook:latest
+    container_name: jupyter
     environment:
-      - KASM_PORT=443
-      - TZ=Europe/Kyiv
+      # Change the server's hostname (clients will connect to):
+      - JUPYTER_HOST=${JUPYTER_HOST}
+      # Change the Jupyter Password:
+      - JUPYTER_PASSWORD=${JUPYTER_PASSWORD}
     labels:
       - "traefik.enable=true"
       # HTTP Routers
-      - "traefik.http.routers.kasm.entrypoints=websecure"
-      - "traefik.http.routers.kasm.rule=Host(`${KASM_HOST}`)"
+      - "traefik.http.routers.jupyter.entrypoints=websecure"
+      - "traefik.http.routers.jupyter.rule=Host(`${JUPYTER_HOST}`)"
       # HTTP Services
-      - "traefik.http.routers.kasm.tls=true"
-      - "traefik.http.routers.kasm.tls.certresolver=letsencrypt"
-      - "traefik.http.services.kasm-svc.loadbalancer.server.port=443"
-      - "traefik.http.services.kasm-svc.loadbalancer.server.scheme=https"
+      - "traefik.http.routers.jupyter.tls=true"
+      - "traefik.http.routers.jupyter.tls.certresolver=letsencrypt"
+      - "traefik.http.services.jupyter-svc.loadbalancer.server.port=8888"
+      - "traefik.http.services.jupyter-svc.loadbalancer.server.scheme=https"
     volumes:
-      - /opt/server-apps/kasm/data:/opt
-      - /opt/server-apps/kasm/profiles:/profiles
-    # Uncomment if you want to access the webui from outside the container
-    # ports:
-    #   - 3000:3000
-    restart: unless-stopped
-
-  code-server:
-    image: lscr.io/linuxserver/code-server:latest
-    container_name: code-server
-    environment:
-      - PUID=1000
-      - PGID=1000
-      - TZ=Etc/UTC
-      - PASSWORD=${CODE_SERVER_PASSWORD}
-      - SUDO_PASSWORD=${CODE_SERVER_PASSWORD}
-      - PROXY_DOMAIN=${CODE_SERVER_HOST}
-      - DEFAULT_WORKSPACE=/config/workspace
-    labels:
-      - "traefik.enable=true"
-      # HTTP Routers
-      - "traefik.http.routers.code-server.entrypoints=websecure"
-      - "traefik.http.routers.code-server.rule=Host(`${CODE_SERVER_HOST}`)"
-      # HTTP Services
-      - "traefik.http.routers.code-server.tls=true"
-      - "traefik.http.routers.code-server.tls.certresolver=letsencrypt"
-      - "traefik.http.services.code-server-svc.loadbalancer.server.port=8443"
-      - "traefik.http.services.code-server-svc.loadbalancer.server.scheme=https"
-    volumes:
-      - ./code-server/config:/config
+      - /opt/server-apps/jupyter/config:/config
+      - /opt/server-apps/jupyter/workspace:/home/jovyan/work
     ports:
-      - 8443:8443
+      - 8888:8888
     restart: unless-stopped
 
   traefik:

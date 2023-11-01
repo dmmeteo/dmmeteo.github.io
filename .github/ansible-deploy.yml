@@ -34,11 +34,13 @@
         owner: root
         group: root
         mode: 0755
-    - name: Copy config file with owner and permissions
+    - name: Services down
+      shell: |
+        docker compose -f {{compose_file_path}} down
+    - name: Copy/update config file with owner and permissions
       copy:
         src: "compose.yml"
         dest: "{{compose_file_path}}"
-    - name: WireGuard server restart
+    - name: Serivces up
       shell: |
-        docker compose -f {{compose_file_path}} down
         docker compose -f {{compose_file_path}} up -d --pull always --quiet-pull

@@ -13,10 +13,8 @@ jobs:
       # Build level envs
       TEMP_FILES: .github/files
       WGUI_HOST: ${{ vars.WGUI_HOST }}
-      KASM_HOST: ${{ vars.KASM_HOST }}
+      JUPYTER_HOST: ${{ vars.JUPYTER_HOST }}
       WGUI_PASSWORD: ${{ secrets.WGUI_PASSWORD }}
-      CODE_SERVER_HOST: ${{ vars.CODE_SERVER_HOST }}
-      CODE_SERVER_PASSWORD: ${{ secrets.CODE_SERVER_PASSWORD }}
       LETSENCTYPT_EMAIL: ${{ vars.LETSENCTYPT_EMAIL }}
     steps:
       - name: Checkout code
@@ -32,8 +30,6 @@ jobs:
           docker compose \
             --file server-apps/compose.yml \
             convert > ${{ env.TEMP_FILES }}/compose.yml
-        env:
-          WG_SERVERURL: ${{ secrets.WG_SERVERURL }}
       - name: Check docker compose config file
         run: |
           docker compose \
