@@ -36,9 +36,8 @@ services:
     image: jupyter/minimal-notebook:latest
     container_name: jupyter
     restart: unless-stopped
-    user: root
     environment:
-      - NB_USER=jovyan
+      - NB_USER=root
       - NB_UID=1000
       - NB_GID=1000
       - CHOWN_HOME=yes
