@@ -13,8 +13,9 @@ jobs:
       # Build level envs
       TEMP_FILES: .github/files
       WGUI_HOST: ${{ vars.WGUI_HOST }}
-      JUPYTER_HOST: ${{ vars.JUPYTER_HOST }}
       WGUI_PASSWORD: ${{ secrets.WGUI_PASSWORD }}
+      JUPYTER_HOST: ${{ vars.JUPYTER_HOST }}
+      JUPYTER_PASSWORD: ${{ secrets.JUPYTER_PASSWORD }}
       LETSENCTYPT_EMAIL: ${{ vars.LETSENCTYPT_EMAIL }}
     steps:
       - name: Checkout code

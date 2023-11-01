@@ -30,16 +30,15 @@ services:
       - "traefik.http.routers.wireguard-ui.tls.certresolver=letsencrypt"
       - "traefik.http.services.wireguard-ui-svc.loadbalancer.server.port=51821"
     volumes:
-      - /opt/server-apps/wireguard:/etc/wireguard
+      - ./wireguard:/etc/wireguard
 
   jupyter:
-    image: jupyter/minimal-notebook:latest
-    container_name: jupyter
+    image: mltooling/ml-workspace:latest
+    container_name: ml-workspace
+    restart: unless-stopped
+    shm_size: 512m
     environment:
-      # Change the server's hostname (clients will connect to):
-      - JUPYTER_HOST=${JUPYTER_HOST}
-      # Change the Jupyter Password:
-      - JUPYTER_PASSWORD=${JUPYTER_PASSWORD}
+      - AUTHENTICATE_VIA_JUPYTER=${JUPYTER_PASSWORD}
     labels:
       - "traefik.enable=true"
       # HTTP Routers
@@ -51,11 +50,9 @@ services:
       - "traefik.http.services.jupyter-svc.loadbalancer.server.port=8888"
       - "traefik.http.services.jupyter-svc.loadbalancer.server.scheme=https"
     volumes:
-      - /opt/server-apps/jupyter/config:/config
-      - /opt/server-apps/jupyter/workspace:/home/jovyan/work
+      - ./jupyter/workspace:/workspace
     ports:
-      - 8888:8888
-    restart: unless-stopped
+      - 8080:8080
 
   traefik:
     image: traefik:v2.9.6
@@ -81,5 +78,7 @@ services:
     network_mode: host
     restart: unless-stopped
     volumes:
-      - /opt/server-apps/letsencrypt:/letsencrypt
+      - ./letsencrypt:/letsencrypt
       - /var/run/docker.sock:/var/run/docker.sock
+    profiles:
+      - production

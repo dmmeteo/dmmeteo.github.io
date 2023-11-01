@@ -35,12 +35,14 @@
         group: root
         mode: 0755
     - name: Services down
-      shell: |
-        docker compose -f {{compose_file_path}} down
+      shell:
+        cmd: docker compose down
+        chdir: "{{config_path}}"
     - name: Copy/update config file with owner and permissions
       copy:
         src: "compose.yml"
         dest: "{{compose_file_path}}"
     - name: Serivces up
-      shell: |
-        docker compose -f {{compose_file_path}} up -d --pull always --quiet-pull
+      shell:
+        cmd: docker compose --profile production up -d --pull always --quiet-pull
+        chdir: "{{config_path}}"
