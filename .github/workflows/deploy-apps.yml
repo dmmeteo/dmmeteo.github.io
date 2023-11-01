@@ -29,11 +29,13 @@ jobs:
       - name: Create docker compose config file
         run: |
           docker compose \
+            --profile production \
             --file server-apps/compose.yml \
             convert > ${{ env.TEMP_FILES }}/compose.yml
       - name: Check docker compose config file
         run: |
           docker compose \
+            --profile production \
             --file ${{ env.TEMP_FILES }}/compose.yml \
             config
       - name: Run playbook

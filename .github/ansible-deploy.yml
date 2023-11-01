@@ -44,5 +44,5 @@
         dest: "{{compose_file_path}}"
     - name: Serivces up
       shell:
-        cmd: docker compose --profile production up -d --pull always --quiet-pull
+        cmd: docker compose up -d --pull always --quiet-pull
         chdir: "{{config_path}}"
