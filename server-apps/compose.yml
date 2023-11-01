@@ -30,7 +30,7 @@ services:
       - "traefik.http.routers.wireguard-ui.tls.certresolver=letsencrypt"
       - "traefik.http.services.wireguard-ui-svc.loadbalancer.server.port=51821"
     volumes:
-      - ./wireguard:/etc/wireguard
+      - /opt/server-apps/wireguard:/etc/wireguard
 
   jupyter:
     image: jupyter/minimal-notebook:latest
@@ -49,8 +49,8 @@ services:
       - "traefik.http.services.jupyter-svc.loadbalancer.server.port=8888"
       - "traefik.http.services.jupyter-svc.loadbalancer.server.scheme=https"
     volumes:
-      - ./jupyter/config:/home/jovyan/.jupyter
-      - ./jupyter/workspace:/home/jovyan/work
+      - /opt/server-apps/jupyter/config:/home/jovyan/.jupyter
+      - /opt/server-apps/jupyter/workspace:/home/jovyan/work
     ports:
       - 8888:8888
 
@@ -78,7 +78,7 @@ services:
       - "--log.level=DEBUG"
     network_mode: host
     volumes:
-      - ./letsencrypt:/letsencrypt
+      - /opt/server-apps/letsencrypt:/letsencrypt
       - /var/run/docker.sock:/var/run/docker.sock
     profiles:
       - production
