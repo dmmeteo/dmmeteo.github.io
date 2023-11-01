@@ -33,10 +33,9 @@ services:
       - ./wireguard:/etc/wireguard
 
   jupyter:
-    image: mltooling/ml-workspace:latest
-    container_name: ml-workspace
+    image: jupyter/minimal-notebook:latest
+    container_name: jupyter
     restart: unless-stopped
-    shm_size: 512m
     environment:
       - AUTHENTICATE_VIA_JUPYTER=${JUPYTER_PASSWORD}
     labels:
@@ -50,9 +49,10 @@ services:
       - "traefik.http.services.jupyter-svc.loadbalancer.server.port=8888"
       - "traefik.http.services.jupyter-svc.loadbalancer.server.scheme=https"
     volumes:
-      - ./jupyter/workspace:/workspace
+      - ./jupyter/config:/home/jovyan/.jupyter
+      - ./jupyter/workspace:/home/jovyan/work
     ports:
-      - 8080:8080
+      - 8888:8888
 
   traefik:
     image: traefik:v2.9.6
