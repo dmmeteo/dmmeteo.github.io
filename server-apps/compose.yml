@@ -91,7 +91,7 @@ services:
       - /opt/server-apps/pihole/etc-dnsmasq.d:/etc/dnsmasq.d
 
   traefik:
-    image: traefik:v2.9.6
+    image: traefik:v2.10.5
     container_name: traefik
     restart: unless-stopped
     command:
