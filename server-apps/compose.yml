@@ -77,7 +77,9 @@ services:
       - "53:53/tcp"
       - "53:53/udp"
       - "67:67/udp" # Only required if you are using Pi-hole as your DHCP server
-      - "80:80/tcp"
+      - "80:80"
+      - "443:443"
+      - "8080:8080"
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.pihole.entrypoints=web,websecure"
