@@ -16,6 +16,8 @@ jobs:
       WGUI_PASSWORD: ${{ secrets.WGUI_PASSWORD }}
       JUPYTER_HOST: ${{ vars.JUPYTER_HOST }}
       JUPYTER_PASSWORD: ${{ secrets.JUPYTER_PASSWORD }}
+      PIHOLE_HOST: ${{ vars.PIHOLE_HOST }}
+      PIHOLE_PASSWORD: ${{ secrets.PIHOLE_PASSWORD }}
       LETSENCTYPT_EMAIL: ${{ vars.LETSENCTYPT_EMAIL }}
     steps:
       - name: Checkout code
