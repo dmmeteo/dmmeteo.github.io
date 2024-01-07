@@ -34,16 +34,19 @@
         owner: root
         group: root
         mode: 0755
-    - name: Services down
-      shell: |
-        # if config file exists then down services
-        if [ -f "{{compose_file_path}}" ]; then
-          docker compose --profile production down
-        fi
-    - name: Copy/update config file with owner and permissions
+    - name: Init config file if not exists with owner and permissions
       copy:
         src: "compose.yml"
         dest: "{{compose_file_path}}"
+        force: false
+    - name: Services down
+      shell: 
+        cmd: docker compose --profile production down
+    - name: Update config file with owner and permissions
+      copy:
+        src: "compose.yml"
+        dest: "{{compose_file_path}}"
+        force: true
     - name: Serivces up
       shell:
         cmd: docker compose --profile production up -d --pull always --quiet-pull
