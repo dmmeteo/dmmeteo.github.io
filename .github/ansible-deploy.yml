@@ -38,6 +38,7 @@
       shell:
         cmd: docker compose --profile production down
         chdir: "{{config_path}}"
+        warn: false # run if compose file exists
     - name: Copy/update config file with owner and permissions
       copy:
         src: "compose.yml"
