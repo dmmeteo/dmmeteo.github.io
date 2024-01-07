@@ -38,7 +38,9 @@
       shell:
         cmd: docker compose --profile production down
         chdir: "{{config_path}}"
-        warn: false # run if compose file exists
+        args:
+          creates: "{{compose_file_path}}"
+        with_items: "{{ variants | default([]) }}"
     - name: Copy/update config file with owner and permissions
       copy:
         src: "compose.yml"
