@@ -18,8 +18,10 @@ jobs:
       JUPYTER_PASSWORD: ${{ secrets.JUPYTER_PASSWORD }}
       PIHOLE_HOST: ${{ vars.PIHOLE_HOST }}
       PIHOLE_PASSWORD: ${{ secrets.PIHOLE_PASSWORD }}
-      SHLINK_HOST: ${{ vars.SHLINK_HOST }}
+      SHLINK_BE_HOST: ${{ vars.SHLINK_BE_HOST }}
+      SHLINK_FE_HOST: ${{ vars.SHLINK_FE_HOST }}
       SHLINK_LICENSE_KEY: ${{ secrets.SHLINK_LICENSE_KEY }}
+      SHLINK_BASIC_AUTH_USERS: ${{ secrets.SHLINK_BASIC_AUTH_USERS }}
       LETSENCTYPT_EMAIL: ${{ vars.LETSENCTYPT_EMAIL }}
     steps:
       - name: Checkout code

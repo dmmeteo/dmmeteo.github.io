@@ -99,17 +99,35 @@ services:
       - DEFAULT_DOMAIN=${SHLINK_HOST}
       - IS_HTTPS_ENABLED=true
       - GEOLITE_LICENSE_KEY=${SHLINK_LICENSE_KEY}
+      # command to generate API key: docker compose exec shlink shlink api-key:generate
     labels:
       - "traefik.enable=true"
       # HTTP Routers
       - "traefik.http.routers.shlink.entrypoints=web,websecure"
-      - "traefik.http.routers.shlink.rule=Host(`${SHLINK_HOST}`)"
+      - "traefik.http.routers.shlink.rule=Host(`${SHLINK_BE_HOST}`)"
       # HTTP Services
       - "traefik.http.routers.shlink.tls=true"
       - "traefik.http.routers.shlink.tls.certresolver=letsencrypt"
       - "traefik.http.services.shlink-svc.loadbalancer.server.port=8080"
     volumes:
       - /opt/server-apps/shlink/data:/etc/shlink/data
+
+  shlink-ui:
+    image: dmmeteo/shlink-web-client:latest
+    container_name: shlink-ui
+    restart: unless-stopped
+    environment:
+      - SHLINK_API_URL=https://${SHLINK_HOST}
+      - SHLINK_BASIC_AUTH_USERS=${SHLINK_BASIC_AUTH_USERS}
+    labels:
+      - "traefik.enable=true"
+      # HTTP Routers
+      - "traefik.http.routers.shlink-ui.entrypoints=web,websecure"
+      - "traefik.http.routers.shlink-ui.rule=Host(`${SHLINK_FE_HOST}`)"
+      # HTTP Services
+      - "traefik.http.routers.shlink-ui.tls=true"
+      - "traefik.http.routers.shlink-ui.tls.certresolver=letsencrypt"
+      - "traefik.http.services.shlink-ui-svc.loadbalancer.server.port=80"
 
   traefik:
     image: traefik:v2.10.5
