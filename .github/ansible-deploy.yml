@@ -35,9 +35,11 @@
         group: root
         mode: 0755
     - name: Services down
-      shell:
-        cmd: docker compose --profile production down
-        removes: "{{compose_file_path}}"
+      shell: |
+        # if config file exists then down services
+        if [ -f "{{compose_file_path}}" ]; then
+          docker compose --profile production down
+        fi
     - name: Copy/update config file with owner and permissions
       copy:
         src: "compose.yml"
