@@ -96,7 +96,7 @@ services:
     container_name: shlink
     restart: unless-stopped
     environment:
-      - DEFAULT_DOMAIN=${SHLINK_HOST}
+      - DEFAULT_DOMAIN=${SHLINK_BE_HOST}
       - IS_HTTPS_ENABLED=true
       - GEOLITE_LICENSE_KEY=${SHLINK_LICENSE_KEY}
       # command to generate API key: docker compose exec shlink shlink api-key:generate
