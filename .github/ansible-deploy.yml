@@ -36,8 +36,11 @@
         mode: 0755
     - name: Services down
       shell:
-        cmd: docker compose --profile production down > /dev/null 2>&1
+        cmd: docker compose --profile production down
         chdir: "{{config_path}}"
+        args:
+          creates: "{{compose_file_path}}"
+        with_items: "{{ variants | default([]) }}"
     - name: Copy/update config file with owner and permissions
       copy:
         src: "compose.yml"
