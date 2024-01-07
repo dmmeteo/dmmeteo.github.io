@@ -37,12 +37,12 @@
     - name: Check if config file exists
       stat:
         path: "{{compose_file_path}}"
-      register: compose_file_path
+      register: compose_file
     - name: Services down
       shell:
         cmd: docker compose --profile production down
         chdir: "{{config_path}}"
-        when: compose_file_path.stat.exists
+        when: compose_file.stat.exists
     - name: Copy/update config file with owner and permissions
       copy:
         src: "compose.yml"
