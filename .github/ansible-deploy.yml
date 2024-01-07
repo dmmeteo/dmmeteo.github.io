@@ -37,8 +37,7 @@
     - name: Services down
       shell:
         cmd: docker compose --profile production down
-        args:
-          removes: "{{compose_file_path}}"
+        removes: "{{compose_file_path}}"
     - name: Copy/update config file with owner and permissions
       copy:
         src: "compose.yml"
