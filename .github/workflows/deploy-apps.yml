@@ -48,7 +48,7 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           inventory: |
             [all]
-            ${{ secrets.ANSIBLE_INVENTORY_HOST }}
+            ${{ vars.ANSIBLE_INVENTORY_HOST }}
           options: |
             --user root
             --verbose
