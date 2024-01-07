@@ -34,15 +34,12 @@
         owner: root
         group: root
         mode: 0755
-    - name: Check if config file exists
-      stat:
-        path: "{{compose_file_path}}"
-      register: compose_file
     - name: Services down
       shell:
         cmd: docker compose --profile production down
-        chdir: "{{config_path}}"
-        when: compose_file.stat.exists
+        args:
+          removes: "{{compose_file_path}}"
+        with_items: "{{ variants | default([]) }}"
     - name: Copy/update config file with owner and permissions
       copy:
         src: "compose.yml"
