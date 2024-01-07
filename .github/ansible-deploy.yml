@@ -27,6 +27,11 @@
       shell: |
         docker --version
         docker compose version
+    - name: Disable Ubuntu DNS resolver
+      shell: |
+        systemctl stop systemd-resolved.service
+        systemctl disable systemd-resolved.service
+        sed -i 's/^nameserver .*/nameserver 8.8.8.8/' /etc/resolv.conf
     - name: Create project folder
       file:
         path: "{{config_path}}"
