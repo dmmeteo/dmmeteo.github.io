@@ -42,6 +42,7 @@
     - name: Services down
       shell: 
         cmd: docker compose --profile production down
+        chdir: "{{config_path}}"
     - name: Update config file with owner and permissions
       copy:
         src: "compose.yml"
