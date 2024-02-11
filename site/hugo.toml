@@ -6,10 +6,8 @@ publishDir = "../docs"
 [params]
     title = "The new dmmeteo.dev"
     description = "A portfolio and blog site"
-    favicon = "static/favicon.ico"
     message = "COMING SOON!"
     release = "May 4, 2024"
-    background = ""
 
 socialIcons = [
     {name = "email", url = "dmmeteo@gmail.com"},
