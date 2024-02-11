@@ -2,8 +2,9 @@ name: Deploy Apps
 
 on:
   push:
-    branches:
-      - master
+    branches: ["master"]
+    paths:
+      - "server-apps/**"
   workflow_dispatch:
 
 jobs:
