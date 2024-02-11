@@ -44,7 +44,7 @@ jobs:
         with:
           submodules: false
       - name: explisitly update submodules
-        run: git submodule update --init
+        run: git config -f .git/config --remove-section submodule.site/site/themes/coming-soon
       # - name: Setup Pages
       #   id: pages
       #   uses: actions/configure-pages@v4
