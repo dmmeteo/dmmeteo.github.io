@@ -1,6 +1,7 @@
 baseURL = "https://dmmeteo.dev/"
 languageCode = 'en-us'
 theme = "coming-soon"
+publishDir = "../docs"
 
 [params]
     title = "The new dmmeteo.dev"
