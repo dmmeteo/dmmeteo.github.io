@@ -1,0 +1,3 @@
+[submodule "site/site/themes/coming-soon"]
+	path = site/site/themes/coming-soon
+	url = https://github.com/dmmeteo/dmmeteo.github.io.git
