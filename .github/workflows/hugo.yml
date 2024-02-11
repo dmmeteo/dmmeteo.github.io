@@ -42,7 +42,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          submodules: true
+          submodules: false
+      - name: explisitly update submodules
+        run: git submodule update --init
       # - name: Setup Pages
       #   id: pages
       #   uses: actions/configure-pages@v4
