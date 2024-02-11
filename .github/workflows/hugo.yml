@@ -43,8 +43,6 @@ jobs:
         uses: actions/checkout@v4
         with:
           submodules: false
-      - name: explisitly update submodules
-        run: git config -f .git/config --remove-section submodule.site/site/themes/coming-soon
       # - name: Setup Pages
       #   id: pages
       #   uses: actions/configure-pages@v4
