@@ -7,7 +7,7 @@ publishDir = "../docs"
     title = "The new dmmeteo.dev"
     description = "A portfolio and blog site"
     message = "COMING SOON!"
-    release = "May 4, 2024"
+    release = "June 30, 2024"
 
 socialIcons = [
     {name = "email", url = "dmmeteo@gmail.com"},
