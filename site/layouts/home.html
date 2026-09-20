@@ -1,0 +1,30 @@
+{{ define "main" }}
+  {{ partial "hero.html" . }}
+
+  <section id="log">
+    {{ partial "section-head.html" (dict "num" "01" "title" "LATEST BUILDER'S LOG" "sub" ("NEED &rarr; BUILD &rarr; BREAK &rarr; RECOVER &rarr; PUBLISH" | safeHTML)) }}
+    {{- $entries := where site.RegularPages "Section" "log" }}
+    {{- with first 1 $entries }}
+      {{- range . }}{{ partial "log-teaser.html" . }}{{ end }}
+    {{- else }}
+      <p class="empty">The first entry is still being written. It will land here and in the feed.</p>
+    {{- end }}
+    {{- if gt (len $entries) 1 }}
+    <p class="more"><a class="link" href="{{ "/log/" | relURL }}">All entries &rarr;</a></p>
+    {{- end }}
+  </section>
+
+  <section id="systems">
+    {{ partial "section-head.html" (dict "num" "02" "title" "THINGS THAT ACTUALLY RUN" "sub" "NOT A PORTFOLIO. AN OPERATING SURFACE.") }}
+    {{ partial "systems.html" . }}
+  </section>
+
+  <section id="contact">
+    {{ partial "section-head.html" (dict "num" "03" "title" "NOTES AND CONTACT" "sub" "") }}
+    <div class="notes">
+      <p>I publish the parts that turned out to be useful, including the ones
+      that broke first. New entries land in the
+      <a class="link" href="{{ "/log/" | relURL }}">Builder's Log</a> and in the feed.</p>
+    </div>
+  </section>
+{{ end }}

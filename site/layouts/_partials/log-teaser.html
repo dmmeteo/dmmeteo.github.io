@@ -1,0 +1,28 @@
+<article class="log">
+  <div class="log-meta">
+    <p class="mono">{{ .Date.Format "02 Jan 2006" | upper }} &middot; {{ .ReadingTime }} MIN READ</p>
+    {{ with .Params.summary }}<p class="deck">{{ . }}</p>{{ end }}
+    {{- with .Params.tags }}
+    <ul class="tags">{{ range . }}<li class="tag">{{ . }}</li>{{ end }}</ul>
+    {{- end }}
+  </div>
+
+  <div class="log-main">
+    {{ with .Params.annotation }}<p><span class="annot">{{ . }} &searr;</span></p>{{ end }}
+    <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+    <p>{{ .Summary }}</p>
+    <p><a class="link" href="{{ .RelPermalink }}">Read the log &rarr;</a></p>
+
+    {{- with .Params.facts }}
+    <div class="artifact">
+      <h4 class="mono">{{ $.Params.factsTitle | default "FROM THE README" }}</h4>
+      <dl>
+        {{- range . }}
+        <dt class="mono">{{ .label }}</dt>
+        <dd>{{ .value }}</dd>
+        {{- end }}
+      </dl>
+    </div>
+    {{- end }}
+  </div>
+</article>

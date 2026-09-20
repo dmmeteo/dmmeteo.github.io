@@ -1,20 +1,34 @@
 baseURL = "https://dmmeteo.dev/"
-languageCode = 'en-us'
-theme = "coming-soon"
-publishDir = "../docs"
+locale = "en-us"
+title = "dimaforcepush"
+description = "Dmytro Sichkar — a Python engineer in Ukraine building and self-hosting agentic systems as daily infrastructure."
+
+enableRobotsTXT = true
+disableKinds = ["taxonomy", "term"]
+
+# Tags render as plain labels; there are no taxonomy pages to link to.
+
+[module]
+  [module.hugoVersion]
+    min = "0.146.0"
+
+[outputs]
+  home = ["html", "rss"]
+  section = ["html", "rss"]
+  page = ["html"]
 
 [params]
-    title = "The new dmmeteo.dev"
-    description = "A portfolio and blog site"
-    message = "COMING SOON!"
-    release = "June 30, 2024"
+  author = "Dmytro Sichkar"
+  brand = "dimaforcepush"
+  mark = "DFP / FIELD NOTES"
+  principle = ["PROOF", "BEFORE", "AUTONOMY"]
+  github = "https://github.com/dmmeteo"
+  x = "https://x.com/dmmeteo"
+  xhandle = "@dmmeteo"
+  email = "dmmeteo@gmail.com"
+  ogimage = "og.png"
 
-socialIcons = [
-    {name = "email", url = "dmmeteo@gmail.com"},
-    {name = "twitter", url = "https://twitter.com/dmmeteo"},
-    {name = "github", url = "https://github.com/dmmeteo"},
-]
+[markup.goldmark.renderer]
+  unsafe = false
 
-[params.twitter]
-	enable = true
-	username = "dmmeteo"
+[taxonomies]

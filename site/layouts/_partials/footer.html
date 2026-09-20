@@ -1,0 +1,9 @@
+<footer class="foot mono">
+  <ul>
+    {{- with site.Home.OutputFormats.Get "rss" }}<li><a href="{{ .Permalink }}">RSS</a></li>{{ end }}
+    {{- with site.Params.github }}<li><a href="{{ . }}" rel="me">GITHUB</a></li>{{ end }}
+    {{- with site.Params.x }}<li><a href="{{ . }}" rel="me">X</a></li>{{ end }}
+    {{- with site.Params.email }}<li><a href="mailto:{{ . }}">EMAIL</a></li>{{ end }}
+  </ul>
+  <span>STATIC HTML &middot; NO TRACKERS &middot; DFP {{ now.Format "2006" }}</span>
+</footer>

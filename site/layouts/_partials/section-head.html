@@ -1,0 +1,5 @@
+{{/* Expects: dict "num" "01" "title" "…" "sub" "…" */}}
+<div class="section-head">
+  <h2 class="mono">{{ .num }} / {{ .title }}</h2>
+  {{ with .sub }}<p class="mono">{{ . }}</p>{{ end }}
+</div>
