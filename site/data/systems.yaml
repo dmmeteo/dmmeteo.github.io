@@ -1,0 +1,32 @@
+# Status is a word, never a duration, uptime or version number.
+# Omit `url` and the template renders plain text instead of a link.
+items:
+  - name: "Hermes Drop"
+    status: "PUBLIC"
+    blurb: >-
+      Self-hosted broker and Hermes plugin for handing a secret to an agent
+      without putting it in the chat. MIT, and not security-audited.
+    url: "https://github.com/dmmeteo/hermes-drop"
+    linkText: "repository"
+
+  - name: "Hermes plugins"
+    status: "PUBLIC"
+    blurb: >-
+      Plugins I wrote for the agent I self-host: Discord thread ownership,
+      local speech-to-text with an LLM polish pass, a Claude Code model
+      provider, local TTS, a music pipeline, a Kanban board.
+    url: "https://github.com/dmmeteo?tab=repositories&q=hermes"
+    linkText: "repositories"
+
+  - name: "Hermes"
+    status: "SELF-HOSTED FORK"
+    blurb: >-
+      Nous Research's Hermes Agent, running on my own VPS and HomeLab.
+      Upstream is theirs; the plugins are mine.
+    url: "https://github.com/NousResearch/hermes-agent"
+    linkText: "upstream"
+
+  - name: "MusicFactory"
+    status: "PRIVATE"
+    blurb: >-
+      A documented production line before it becomes software. Not public yet.

@@ -1,0 +1,30 @@
+<section class="hero" id="now">
+  <div class="hero-main">
+    <p class="kicker mono">
+      {{- range $i, $k := .Params.kicker }}{{ if $i }}<span aria-hidden="true">&middot;</span>{{ end }}<span>{{ $k }}</span>{{ end -}}
+    </p>
+    <h1>{{ .Params.headline }} <em>{{ .Params.headlineEm }}</em></h1>
+    <div class="intro">{{ .Content }}</div>
+  </div>
+
+  <aside class="hero-side" aria-label="Now building">
+    <p class="stamp">
+      {{- range $i, $w := site.Params.principle }}{{ if $i }}<br>{{ end }}{{ $w }}{{ end -}}
+    </p>
+
+    {{ with resources.Get "img/dima-and-cactus.png" }}
+    <img class="cactus" src="{{ .RelPermalink }}" width="{{ .Width }}" height="{{ .Height }}"
+         fetchpriority="high"
+         alt="Hand-drawn doodle: Dima hunched over a laptop, labelled in the drawing as &quot;me (accurate)&quot;, next to a grinning cactus in a pot, labelled &quot;dancing cactus (my coworker)&quot;.">
+    {{ end }}
+
+    {{ with .Params.now }}
+    <div class="proof">
+      <span class="mono">NOW BUILDING</span>
+      <strong>{{ .label }}</strong>
+      <p>{{ .blurb }}</p>
+      {{ with .href }}<a class="link" href="{{ . | relURL }}">{{ $.Params.now.linkText | default "read more" }} &rarr;</a>{{ end }}
+    </div>
+    {{ end }}
+  </aside>
+</section>

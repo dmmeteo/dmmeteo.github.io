@@ -1,0 +1,8 @@
+<head>
+  {{ partial "head/meta.html" . }}
+  {{ with resources.Get "css/main.css" }}
+    {{ $css := . | minify | fingerprint "sha256" }}
+    <link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}">
+  {{ end }}
+  {{ partial "head/schema.html" . }}
+</head>

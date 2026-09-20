@@ -1,0 +1,17 @@
+<header class="top">
+  <a class="brand" href="{{ "/" | relURL }}">{{ site.Params.brand }}</a>
+  <nav class="nav mono" aria-label="Sections">
+    {{- if .IsHome }}
+    <a href="#now">now</a>
+    <a href="#log">builder's log</a>
+    <a href="#systems">systems</a>
+    <a href="#contact">contact</a>
+    {{- else }}
+    <a href="{{ "/" | relURL }}">home</a>
+    <a href="{{ "/log/" | relURL }}">builder's log</a>
+    <a href="{{ "/#systems" | relURL }}">systems</a>
+    <a href="{{ "/#contact" | relURL }}">contact</a>
+    {{- end }}
+  </nav>
+  <span class="rev mono">{{ site.Params.mark }}</span>
+</header>

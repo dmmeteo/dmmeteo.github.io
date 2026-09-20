@@ -1,0 +1,43 @@
+{{- $title := cond .IsHome
+      (printf "%s — Dmytro Sichkar, Python engineer" site.Params.brand)
+      (printf "%s · %s" .Title site.Params.brand) -}}
+{{- $desc := "" -}}
+{{- with .Description }}{{ $desc = . }}
+{{- else }}{{ with .Params.summary }}{{ $desc = . }}
+{{- else }}{{ $desc = site.Description }}{{ end }}{{ end -}}
+{{- $og := "" -}}
+{{- with site.Params.ogimage }}{{ $og = (urls.JoinPath site.BaseURL .) }}{{ end -}}
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<meta name="theme-color" content="#f3f0e8">
+<title>{{ $title }}</title>
+<meta name="description" content="{{ $desc }}">
+<meta name="author" content="{{ site.Params.author }}">
+<link rel="canonical" href="{{ .Permalink }}">
+<link rel="icon" href="{{ "favicon.ico" | relURL }}" sizes="any">
+
+<meta property="og:type" content="{{ cond .IsPage "article" "website" }}">
+<meta property="og:site_name" content="{{ site.Params.brand }}">
+<meta property="og:locale" content="en_US">
+<meta property="og:title" content="{{ $title }}">
+<meta property="og:description" content="{{ $desc }}">
+<meta property="og:url" content="{{ .Permalink }}">
+{{- with $og }}
+<meta property="og:image" content="{{ . }}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="dimaforcepush — field notes from systems that actually run.">
+{{- end }}
+{{- if and .IsPage (not .Date.IsZero) }}
+<meta property="article:published_time" content="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">
+{{- end }}
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="{{ site.Params.xhandle }}">
+<meta name="twitter:creator" content="{{ site.Params.xhandle }}">
+
+{{- range .AlternativeOutputFormats }}
+<link rel="{{ .Rel }}" type="{{ .MediaType.Type }}" href="{{ .Permalink }}" title="{{ site.Params.brand }}">
+{{- end }}

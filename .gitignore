@@ -46,3 +46,8 @@ Temporary Items
 .apdisk
 
 # End of https://www.gitignore.io/api/Linux,MacOS
+
+# Hugo
+/site/public/
+/site/resources/
+/site/.hugo_build.lock
