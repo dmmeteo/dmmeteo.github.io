@@ -25,17 +25,9 @@ disableKinds = ["taxonomy", "term"]
   github = "https://github.com/dmmeteo"
   x = "https://x.com/dmmeteo"
   xhandle = "@dmmeteo"
-  email = "dmmeteo@gmail.com"
   ogimage = "og.png"
 
 [markup.goldmark.renderer]
   unsafe = false
 
 [taxonomies]
-
-# Cloudflare's Email Address Obfuscation rewrites mailto: links at the edge and
-# injects a decode script, which would make the address JS-dependent. The
-# documented opt-out is an HTML comment, so comments must survive minification.
-[minify]
-  [minify.tdewolff.html]
-    keepComments = true
