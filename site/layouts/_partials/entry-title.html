@@ -1,0 +1,2 @@
+{{- /* A title for pages that may not have one (notes). */ -}}
+{{- with .Title }}{{ . }}{{ else }}Note, {{ .Date.Format "2 Jan 2006" }}{{ end -}}

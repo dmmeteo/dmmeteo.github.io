@@ -1,0 +1,7 @@
+{{- /* {{< chapter n="01" title="…" tone="sky" >}}markdown{{< /chapter >}} */ -}}
+{{- $title := .Get "title" -}}
+{{- $id := printf "ch-%s" (.Get "n") -}}
+<section class="chapter tone-{{ .Get "tone" | default "paper" }}" id="{{ $id }}" aria-labelledby="{{ $id }}-t">
+<header class="chapter-head"><span class="mono chapter-n">{{ .Get "n" }}</span><h2 id="{{ $id }}-t">{{ $title }}</h2></header>
+<div class="prose reveal">{{ .InnerDeindent | .Page.RenderString (dict "display" "block") }}</div>
+</section>

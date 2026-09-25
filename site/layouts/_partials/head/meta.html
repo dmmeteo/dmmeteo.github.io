@@ -1,17 +1,17 @@
 {{- $title := cond .IsHome
       (printf "%s — Dmytro Sichkar, Python engineer" site.Params.brand)
-      (printf "%s · %s" .Title site.Params.brand) -}}
+      (printf "%s · %s" (partial "entry-title.html" .) site.Params.brand) -}}
 {{- $desc := "" -}}
 {{- with .Description }}{{ $desc = . }}
 {{- else }}{{ with .Params.summary }}{{ $desc = . }}
-{{- else }}{{ $desc = site.Description }}{{ end }}{{ end -}}
+{{- else }}{{ $desc = site.Params.description }}{{ end }}{{ end -}}
 {{- $og := "" -}}
 {{- with site.Params.ogimage }}{{ $og = (urls.JoinPath site.BaseURL .) }}{{ end -}}
 
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="light">
-<meta name="theme-color" content="#f3f0e8">
+<meta name="theme-color" content="#f6f4ee">
 <title>{{ $title }}</title>
 <meta name="description" content="{{ $desc }}">
 <meta name="author" content="{{ site.Params.author }}">
@@ -28,7 +28,7 @@
 <meta property="og:image" content="{{ . }}">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="dimaforcepush — field notes from systems that actually run.">
+<meta property="og:image:alt" content="dimaforcepush — a strange personal engineering journal.">
 {{- end }}
 {{- if and .IsPage (not .Date.IsZero) }}
 <meta property="article:published_time" content="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">

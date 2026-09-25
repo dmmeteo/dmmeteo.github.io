@@ -1,0 +1,70 @@
+# dimaforcepush — design system (rev 02)
+
+Decisions come from the design grilling of 2026-09-21…25
+(`~/projects/dimaforcepush-brand/DESIGN-GRILLING.md`, Q1–Q18). Main
+inspiration: typesafe.ai; house foundation: `design-foundation`.
+
+## Shape of the site
+
+- **Home**: hero (headline, Dima + cactus banner, pinned NOW = latest
+  `kind: now` entry), then one mixed chronological feed, 12 entries, then
+  `load older` → `/log/page/2/`.
+- **log/**: the same feed, paginated, plus a monthly archive on page 1.
+- **things/**: feature pages, tagged `PROJECT` or `RESEARCH`; one page per
+  project, not per release. Data-only rows from `data/systems.yaml` below.
+- **whoami/**: `$ whoami`, banner, prose, `cat facts.txt` sidebar.
+- Nav: `log/ · things/ · whoami/`. English only; Hugo multilingual later.
+
+## Entry kinds
+
+| kind | label | body |
+| --- | --- | --- |
+| `note` | NOTE | text inline, optional Literata aside, no title |
+| `log` | BUILDER'S LOG | title, summary, link; optional `thing:` link |
+| `artifact` | ARTIFACT | title, summary, real preview image |
+| `incident` | BROKE / RECOVERED | title, `timeline:` rows (BROKE, CAUSE, FIX, PROOF) |
+| `now` | NOW BUILDING | title, summary, `status`, `mood`; latest one is pinned |
+
+No author name or avatar on entries: single-author site.
+
+## Tokens (light theme ships; dark is prepared under `[data-theme="dark"]`)
+
+paper `#f6f4ee` · reading card `#fffdf8` · ink `#151515` · muted `#5d5a55`
+(paper only) · link `#1537d6` · visited `#551a8b` · mark/selection `#ffe14d`
+· fields: lime `#d9ff62` (now), sky `#b9dfff` (artifact), coral `#ffb3a7`
+(incident), lilac `#c5b6ff` (log / project), sun `#ffd878` (research).
+Text on colored fields is always ink.
+
+## Type
+
+Fixel Display 500 (identity, headlines; tight −0.035…−0.068em), Fixel Text
+400/500 (reading, 18px/1.55), Geist Mono 400 (dates, tags, statuses, logs),
+Literata italic 400 (rare personal asides only). Self-hosted woff2, subset to
+Latin + Cyrillic; no Russian-origin faces.
+
+## Motion
+
+Quiet on home: hero gradient drift (transform only), Dima blinks, the cactus
+dances every ~7 s and on hover; motion starts 4 s after load. Feature pages:
+scroll-revealed chapters, growing bars, reading progress — CSS scroll-driven
+animation inside `@supports`. Everything stops under
+`prefers-reduced-motion`.
+
+## Micro-details
+
+Yellow `::selection`, ink focus ring with offset, underline offset .18em and
+2px on hover, blue caret, ink scrollbar, current nav item on a marker
+background, blinking caret on `$ whoami`.
+
+## Windows
+
+Desktop only (≥1100px, fine pointer): feed links with `data-window` open the
+article in a draggable, resizable window with `open in new tab ↗`,
+`maximize`, `close ×`; Escape closes the top one. Things pages always open
+as full pages. Mobile and no-JS use normal navigation.
+
+## Checks
+
+Lighthouse (mobile, simulated throttling), 2026-09-25 local build: home
+99/100/100/100; log 98/100/100/100; feature pages 99/100/100/100. CI smoke
+check in `.github/workflows/hugo.yml`.

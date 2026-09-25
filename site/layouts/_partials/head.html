@@ -1,8 +1,8 @@
 <head>
   {{ partial "head/meta.html" . }}
-  {{ with resources.Get "css/main.css" }}
-    {{ $css := . | minify | fingerprint "sha256" }}
-    <link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}">
-  {{ end }}
+  <link rel="preload" href="{{ "fonts/FixelDisplay-Medium.woff2" | relURL }}" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="{{ "fonts/FixelText-Regular.woff2" | relURL }}" as="font" type="font/woff2" crossorigin>
+  {{- /* Inlined: one less render-blocking request; ~6 KB gzipped. */}}
+  {{ with resources.Get "css/main.css" }}<style>{{ (. | minify).Content | safeCSS }}</style>{{ end }}
   {{ partial "head/schema.html" . }}
 </head>

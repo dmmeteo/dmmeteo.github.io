@@ -1,0 +1,41 @@
+{{- $kind := .Params.kind | default "log" }}
+<article class="entry k-{{ $kind }}" id="{{ .File.ContentBaseName }}">
+  <div class="entry-meta mono">
+    <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "02 Jan" | upper }}<span> {{ .Date.Format "2006" }}</span></time>
+    <span class="tag">{{ partial "kind.html" $kind }}</span>
+  </div>
+  <div class="entry-body">
+    {{- if eq $kind "note" }}
+      <div class="note-text">{{ .Content }}</div>
+      {{ with .Params.aside }}<p class="aside">{{ . }}</p>{{ end }}
+      <a class="permalink mono" href="{{ .RelPermalink }}" data-window>permalink</a>
+    {{- else if eq $kind "now" }}
+      <h3><a href="{{ .RelPermalink }}" data-window>{{ .Title }}</a></h3>
+      <p>{{ .Params.summary }}</p>
+      <p class="mono status-line">status / {{ .Params.status | default "working" }}{{ with .Params.mood }} &middot; mood / {{ . }}{{ end }}</p>
+    {{- else if eq $kind "incident" }}
+      <h3><a href="{{ .RelPermalink }}" data-window>{{ .Title }}</a></h3>
+      {{ with .Params.timeline }}
+      <dl class="timeline mono">
+        {{- range . }}<div><dt>{{ .t }}</dt><dd>{{ .text }}</dd></div>{{ end }}
+      </dl>
+      {{ end }}
+      <a class="more" href="{{ .RelPermalink }}" data-window>Read the incident &rarr;</a>
+    {{- else if eq $kind "artifact" }}
+      <h3><a href="{{ .RelPermalink }}" data-window>{{ .Title }}</a></h3>
+      <p>{{ .Params.summary }}</p>
+      {{ with .Params.image }}
+      <a class="artifact-shot" href="{{ $.RelPermalink }}" data-window tabindex="-1" aria-hidden="true">
+        <img src="{{ . | relURL }}" alt="" loading="lazy" decoding="async" width="1200" height="1075">
+      </a>
+      {{ end }}
+    {{- else }}
+      <h3><a href="{{ .RelPermalink }}" data-window>{{ .Title }}</a></h3>
+      <p>{{ .Params.summary | default .Summary }}</p>
+      <p class="links">
+        <a class="more" href="{{ .RelPermalink }}" data-window>Read the log &rarr;</a>
+        {{ with .Params.thing }}{{ with site.GetPage . }}<a class="more" href="{{ .RelPermalink }}">{{ .Title }}: project page &rarr;</a>{{ end }}{{ end }}
+      </p>
+    {{- end }}
+  </div>
+</article>

@@ -1,0 +1,24 @@
+{{- /* {{< bars title="…" unit="M" >}} one bar per line: "label | value | optional note" */ -}}
+{{- $rows := slice }}{{ $max := 0.0 }}
+{{- range split (trim .Inner "\n ") "\n" }}{{ with trim . " " }}
+  {{- $p := split . "|" }}
+  {{- $v := float (trim (index $p 1) " ") }}
+  {{- $note := "" }}{{ if gt (len $p) 2 }}{{ $note = trim (index $p 2) " " }}{{ end }}
+  {{- $rows = $rows | append (dict "label" (trim (index $p 0) " ") "v" $v "note" $note) }}
+  {{- if gt $v $max }}{{ $max = $v }}{{ end }}
+{{- end }}{{ end }}
+{{- $unit := .Get "unit" }}
+<figure class="bars reveal">
+  <figcaption class="mono">{{ .Get "title" }}</figcaption>
+  <table>
+    <thead class="visually-hidden"><tr><th scope="col">Label</th><th scope="col">Value</th></tr></thead>
+    <tbody>
+    {{- range $rows }}
+    <tr{{ with .note }} class="hot"{{ end }}>
+      <th scope="row" class="mono">{{ .label }}</th>
+      <td><span class="bar" style="{{ printf "--v:%.3f" (div .v $max) | safeCSS }}"></span><span class="mono bar-v">{{ .v }}{{ $unit }}{{ with .note }} &middot; {{ . }}{{ end }}</span></td>
+    </tr>
+    {{- end }}
+    </tbody>
+  </table>
+</figure>

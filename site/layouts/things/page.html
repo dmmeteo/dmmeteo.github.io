@@ -1,0 +1,34 @@
+{{ define "bodyclass" }}feature tone-{{ .Params.tone | default "lilac" }}{{ end }}
+{{ define "main" }}
+<div class="progress" aria-hidden="true"></div>
+<article class="feat">
+  <header class="feat-hero">
+    <p class="kicker mono"><span class="tag">{{ partial "kind.html" .Params.kind }}</span> <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "02 Jan 2006" | upper }}</time></p>
+    <h1>{{ .Title }}</h1>
+    {{ with .Params.deck }}<p class="deck">{{ . }}</p>{{ end }}
+    {{- with .Params.facts }}
+    <dl class="facts">
+      {{- range . }}<div><dt class="mono">{{ .label }}</dt><dd>{{ .value }}</dd></div>{{ end }}
+    </dl>
+    {{- end }}
+  </header>
+
+  {{- $toc := findRE `(?s)<section class="chapter[^"]*" id="[^"]+"[^>]*>.*?<h2[^>]*>.*?</h2>` .Content }}
+  {{- with $toc }}
+  <nav class="chapters mono" aria-label="Chapters">
+    {{- range . }}
+      {{- $id := replaceRE `(?s)^<section[^>]*? id="([^"]+)".*` "$1" . }}
+      {{- $t := replaceRE `(?s).*<h2[^>]*>(.*?)</h2>.*` "$1" . }}
+    <a href="#{{ $id }}">{{ $t | safeHTML }}</a>
+    {{- end }}
+  </nav>
+  {{- end }}
+
+  <div class="feat-body">{{ .Content }}</div>
+
+  <footer class="read-foot">
+    {{ with .Params.repo }}<a class="more" href="{{ . }}">Inspect the repository &rarr;</a>{{ end }}
+    <a class="more" href="{{ "/things/" | relURL }}">&larr; things/</a>
+  </footer>
+</article>
+{{ end }}

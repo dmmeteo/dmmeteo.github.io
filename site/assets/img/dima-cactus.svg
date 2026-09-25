@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 890 445" role="img" aria-labelledby="dfp-t">
+<title id="dfp-t">Dima at a laptop, unimpressed; a dancing cactus next to him</title>
+<style>
+.dfp-ln{fill:none;stroke:currentColor;stroke-width:var(--dfp-stroke,6);stroke-linecap:round;stroke-linejoin:round}
+.dfp-bg{fill:var(--dfp-fill,#fff)}
+.dfp-ink{fill:currentColor}
+.dfp-wg{stroke-width:calc(var(--dfp-stroke,6)*.85)}
+.dfp-dt{stroke-width:calc(var(--dfp-stroke,6)*.62)}
+.dfp-cac{stroke:var(--dfp-cactus,currentColor)}
+.dfp-cf{fill:var(--dfp-cactus,currentColor)}
+.dfp-cbg{fill:var(--dfp-cactus-fill,var(--dfp-fill,#fff))}
+.dfp-lid{transform:scaleY(0);transform-box:fill-box;transform-origin:top;animation:dfp-blink 5.6s linear infinite}
+.dfp-closed .dfp-lid{animation:none;transform:none}
+#cactus-body{transform-box:fill-box;transform-origin:50% 100%;animation:dfp-sway 7s ease-in-out infinite}
+.dfp-wiggles{animation:dfp-wig 7s linear infinite}
+@keyframes dfp-blink{0%,97%{transform:scaleY(0)}98.3%{transform:scaleY(1)}99.6%,100%{transform:scaleY(0)}}
+@keyframes dfp-sway{0%,22%,100%{transform:rotate(0)}3%{transform:rotate(-4deg)}7%{transform:rotate(4deg)}11%{transform:rotate(-4deg)}15%{transform:rotate(4deg)}19%{transform:rotate(-2deg)}}
+@keyframes dfp-wig{0%,23%,100%{opacity:0}3%,19%{opacity:1}}
+@media (prefers-reduced-motion:reduce){.dfp-lid,#cactus-body,.dfp-wiggles{animation:none}}
+</style>
+<g id="dima">
+<path class="dfp-bg" d="M290 240C330 280 400 272 432 246C465 270 490 320 494 386H285Z"/>
+<path class="dfp-ln" d="M432 246C465 270 490 320 494 386"/>
+<path class="dfp-ln" d="M410 257.5L361 334M438 253C448 285 446 330 432 373"/>
+<path class="dfp-ln dfp-bg" d="M372 86C430 86 471 128 471 180C471 232 425 270 370 270C318 270 272 225 266 180C266 128 314 86 372 86Z"/>
+<path class="dfp-ln" d="M284 276C287 258 290 247 295 240C302 229 312 222 325 222C345 222 365 235 380 252C405 282 425 330 431 373M314.5 226.5l1 3.5M338 228l1.5 3.5"/>
+<g id="face">
+<path class="dfp-ln" d="M263.5 182.5L309 181Q312 180 311.5 176M334 175.5Q334 181 339 181L403 177.5M321 239Q330 236.5 339 239.5"/>
+<path class="dfp-ln" d="M307.5 183C309.5 197 302 206.5 290 206.5C283 206.5 277 205 273 202.5M339 182C337.5 198 350 209 370 209C390 209 404 197 402.5 179.5"/>
+<circle class="dfp-ink" cx="282.5" cy="193" r="3.8"/><circle class="dfp-ink" cx="352.5" cy="193" r="3.8"/>
+<g class="dfp-lids">
+<path class="dfp-ln dfp-bg dfp-lid" d="M267.5 182.5L307.5 181.5C309.5 197 302 206.5 290 206.5C283 206.5 277 205 272.5 202.5C269 196 267.5 189 267.5 182.5Z"/>
+<path class="dfp-ln dfp-bg dfp-lid" d="M339 181.5L402.5 178.5C404 197 390 209 370 209C350 209 337.5 198 339 181.5Z"/>
+</g>
+</g>
+</g>
+<path class="dfp-ln" d="M74 386H812"/>
+<g id="laptop">
+<path class="dfp-ln dfp-bg" d="M377 371L444 375Q449 375.5 449 380V385Q449 389 444.5 390L381 400Z"/>
+<path class="dfp-ln dfp-bg" d="M127.5 263.5L343 271.5Q349 272 351 278.5L381 400H164Q158.5 400.5 156.5 395L118 272.5Q116.5 263.5 127.5 263.5Z"/>
+<path class="dfp-ln" style="stroke-width:calc(var(--dfp-stroke,6)*1.15)" d="M247 343H242Q237.5 343 237.5 338.5V332M253 337H258Q262.5 337 262.5 332.5V325"/><path class="dfp-ln" style="stroke-width:calc(var(--dfp-stroke,6)*1.9)" d="M250 354V321"/>
+</g>
+<g id="cactus">
+<g class="dfp-wiggles">
+<path class="dfp-ln dfp-wg" d="M704 147Q714 152 716 167.5M721 143Q731 148 732 160.5M732 212Q743 215 746 225.5M745 202.5Q755 206 757.5 217.5M591 279.5Q597 288 609 288.5M586 292.5Q590 300 600.5 300.5"/>
+</g>
+<g id="cactus-body">
+<path class="dfp-ln dfp-cac dfp-cbg" d="M641 330V287C641 276 636 272 626 271.5C603 270 585 256 582 236C579 222 588 215 599 215.5C609 216 614 223 617 233C620 245 626 251 633 250.5C642 250 645 243 645 232C645 218 644 207 640 196C636 185 633 174 637 165C641 154 654 149 668 149.5C685 150 697 160 700 173C703 185 697 196 692 204C686 215 683 226 683.5 238C684 247 688 251 694 251C699 251 702 246 704 240C708 230 715 225 722.5 225C731 225 737 232 736 242C735 255 725 267 710 273.5C700 278 690 279 684 280C679 281 677 285 677 292V330"/>
+<path class="dfp-ln dfp-dt dfp-cac" d="M663 160.5v3.5M647.5 168l1 1M643 194.5l2-1.5M687 193.5l2 1.5M653.5 223.5v5M670 231v5M645 258.5l2 4M674 263.5l3.5-3M691 267.5l4-.5M666 284.5v5M651 304.5v4.5M667 307v3.5M594 230.5l2.5 4.5M603 250.5l3 3M624 263l4 .8M719.5 242.5l3-3M713 259.5l4-3.3"/>
+<g class="dfp-cf"><circle cx="676.5" cy="162.5" r="2"/><circle cx="670.5" cy="216" r="2"/><circle cx="678.5" cy="220" r="2"/><circle cx="665.5" cy="252.5" r="2"/><circle cx="698.5" cy="259" r="2"/><circle cx="649.5" cy="284" r="2"/><circle cx="605.5" cy="228.5" r="2"/><circle cx="716.5" cy="236" r="2"/></g>
+<circle class="dfp-ink" cx="655" cy="179.5" r="5.5"/><circle class="dfp-ink" cx="679" cy="179.5" r="5.5"/>
+<path class="dfp-ln" d="M655 195Q666 207 677 195"/>
+</g>
+<path class="dfp-ln dfp-bg" d="M617 342.5L624 396Q625 401 631 401.5Q659 403 687 401.5Q693 401 694 396L702 342.5"/>
+<rect class="dfp-ln dfp-bg" x="610" y="320" width="98" height="22.5" rx="4.5"/>
+</g>
+</svg>

@@ -1,17 +1,22 @@
 # dmmeteo.dev
 
-Source for [dmmeteo.dev](https://dmmeteo.dev/) — a static Hugo site with no
-theme, no framework, no JavaScript and no third-party runtime requests.
+Source for [dmmeteo.dev](https://dmmeteo.dev/) — the `dimaforcepush` site: a
+static Hugo site with no theme, no framework and no third-party runtime
+requests. One small script adds desktop article windows and "load older";
+every page works without it. Design system: [DESIGN.md](DESIGN.md).
 
 ## Layout
 
 ```
 site/            Hugo project (the only source of the site)
-  content/       _index.md is the homepage; log/*.md are Builder's Log entries
-  data/          systems.yaml — the "Things That Actually Run" rows
-  layouts/       original templates (flat layout structure, Hugo >= 0.146)
-  assets/        css/main.css and the hero image, both through Hugo's pipeline
-  static/        favicon, OG card, CNAME — copied verbatim
+  content/       _index.md homepage · log/ feed entries (kind: note, log,
+                 artifact, incident, now) · things/ feature pages (kind:
+                 project, research) · whoami.md
+  data/          systems.yaml — "also running" rows on /things/
+  layouts/       templates (Hugo >= 0.146 layout names); _shortcodes/ holds
+                 chapter, flow, stats, bars, callout for feature pages
+  assets/        css/main.css (inlined), js/site.js, img/dima-cactus.svg
+  static/        fonts (self-hosted, OFL), images, favicon, OG card, CNAME
 CNAME            repo-root custom domain record
 server-apps/     unrelated homelab docker-compose stack (see below)
 ```

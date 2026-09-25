@@ -1,0 +1,36 @@
+{{ define "bodyclass" }}things-list{{ end }}
+{{ define "main" }}
+<header class="page-head">
+  <p class="kicker mono">projects &middot; research &middot; whatever else got big</p>
+  <h1>{{ .Title }}</h1>
+  <div class="intro">{{ .Content }}</div>
+</header>
+
+<section class="things" aria-label="Things">
+  {{- range .RegularPages.ByDate.Reverse }}
+  <a class="thing tone-{{ .Params.tone | default "lilac" }}" href="{{ .RelPermalink }}">
+    <span class="tag mono">{{ partial "kind.html" .Params.kind }}</span>
+    <h2>{{ .Title }}</h2>
+    <p>{{ .Params.deck }}</p>
+    <span class="mono thing-date">{{ .Date.Format "02 Jan 2006" | upper }} &rarr;</span>
+  </a>
+  {{- end }}
+</section>
+
+{{- $titles := slice }}{{ range .RegularPages }}{{ $titles = $titles | append .Title }}{{ end }}
+{{- $rest := slice }}{{ range hugo.Data.systems.items }}{{ if not (in $titles .name) }}{{ $rest = $rest | append . }}{{ end }}{{ end }}
+{{- with $rest }}
+<section class="running" aria-labelledby="running-title">
+  <header class="band"><h2 id="running-title" class="mono">also running &mdash; no page yet</h2></header>
+  <ul>
+    {{- range . }}
+    <li>
+      <span class="mono status">{{ .status }}</span>
+      <strong>{{ with .url }}<a href="{{ . }}">{{ end }}{{ .name }}{{ with .url }}</a>{{ end }}</strong>
+      <span>{{ .blurb }}</span>
+    </li>
+    {{- end }}
+  </ul>
+</section>
+{{- end }}
+{{ end }}

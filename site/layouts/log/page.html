@@ -1,0 +1,33 @@
+{{ define "bodyclass" }}reading k-{{ .Params.kind | default "log" }}{{ end }}
+{{ define "main" }}
+{{- $kind := .Params.kind | default "log" }}
+<article class="read k-{{ $kind }}">
+  <header class="read-head">
+    <p class="kicker mono">
+      <span class="tag">{{ partial "kind.html" $kind }}</span>
+      <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "02 Jan 2006" | upper }}</time>
+      {{- if gt .ReadingTime 1 }}<span>&middot; {{ .ReadingTime }} min read</span>{{ end }}
+    </p>
+    <h1>{{ partial "entry-title.html" . }}</h1>
+    {{ with .Params.summary }}<p class="deck">{{ . }}</p>{{ end }}
+  </header>
+
+  {{- with .Params.timeline }}
+  <dl class="timeline mono">
+    {{- range . }}<div><dt>{{ .t }}</dt><dd>{{ .text }}</dd></div>{{ end }}
+  </dl>
+  {{- end }}
+
+  {{- with .Params.image }}
+  <figure class="shot"><img src="{{ . | relURL }}" alt="{{ $.Params.imageAlt }}" width="1200" height="1075" decoding="async"></figure>
+  {{- end }}
+
+  <div class="prose">{{ .Content }}</div>
+  {{ with .Params.aside }}<p class="aside">{{ . }}</p>{{ end }}
+
+  <footer class="read-foot">
+    {{ with .Params.thing }}{{ with site.GetPage . }}<a class="more" href="{{ .RelPermalink }}">{{ .Title }}: project page &rarr;</a>{{ end }}{{ end }}
+    <a class="more" href="{{ "/log/" | relURL }}">&larr; log/</a>
+  </footer>
+</article>
+{{ end }}

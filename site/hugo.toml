@@ -6,8 +6,6 @@ description = "Dmytro Sichkar — a Python engineer in Ukraine building and self
 enableRobotsTXT = true
 disableKinds = ["taxonomy", "term"]
 
-# Tags render as plain labels; there are no taxonomy pages to link to.
-
 [module]
   [module.hugoVersion]
     min = "0.146.0"
@@ -17,17 +15,39 @@ disableKinds = ["taxonomy", "term"]
   section = ["html", "rss"]
   page = ["html"]
 
+# The home feed and /log/ pages show this many entries before "load older".
+[pagination]
+  pagerSize = 12
+
 [params]
+  description = "Dmytro Sichkar — a Python engineer in Ukraine building and self-hosting agentic systems as daily infrastructure."
+  pagerSize = 12  # keep equal to pagination.pagerSize
   author = "Dmytro Sichkar"
   brand = "dimaforcepush"
-  mark = "DFP / FIELD NOTES"
-  principle = ["PROOF", "BEFORE", "AUTONOMY"]
+  mark = "DFP · REV 02"
   github = "https://github.com/dmmeteo"
   x = "https://x.com/dmmeteo"
   xhandle = "@dmmeteo"
   ogimage = "og.png"
 
-[markup.goldmark.renderer]
-  unsafe = false
+[menus]
+  [[menus.main]]
+    name = "log/"
+    pageRef = "/log"
+    weight = 10
+  [[menus.main]]
+    name = "things/"
+    pageRef = "/things"
+    weight = 20
+  [[menus.main]]
+    name = "whoami/"
+    pageRef = "/whoami"
+    weight = 30
 
-[taxonomies]
+# Content is authored in this repo; nested shortcodes (flow inside chapter)
+# need their HTML kept when the parent renders its inner Markdown.
+[markup.goldmark.renderer]
+  unsafe = true
+
+[markup.highlight]
+  noClasses = false

@@ -1,8 +1,8 @@
 ---
-title: "Builder's Log"
-description: "Need, build, break, recover, publish. Notes from systems I actually run."
+title: "log/"
+description: "Notes, builder's logs, artifacts and incidents from systems I actually run."
 ---
 
-Need → build → break → recover → publish. These are notes from systems I
-run myself, written up once they have survived contact with real use —
-including the parts that turned out to be wrong.
+Everything in one stream, newest first: short notes, builder's logs,
+artifacts and the things that broke. Bigger projects and research live in
+[things/](/things/).
