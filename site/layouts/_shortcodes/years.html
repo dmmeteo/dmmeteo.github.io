@@ -1,0 +1,2 @@
+{{- /* {{< years since=2021 >}} → whole years since then, at build time. Defaults to params.leadSince. */ -}}
+{{- sub now.Year (int (.Get "since" | default site.Params.leadSince)) -}}

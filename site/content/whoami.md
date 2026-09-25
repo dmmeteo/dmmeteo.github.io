@@ -8,7 +8,7 @@ facts:
   - label: "LANGUAGE"
     value: "Python, ~10 years"
   - label: "DEPTH"
-    value: "Django, backend, five years as a team lead"
+    value: "Django, backend, {leadYears} years as a team lead"
   - label: "RUNS"
     value: "A multi-profile Hermes agent on a VPS and a HomeLab"
   - label: "PRINCIPLE"
@@ -27,7 +27,7 @@ what broke, and what I changed because of it.
 ## Background
 
 About ten years of Python, most of them on backend work, with deep Django
-experience — including five years leading a team. Django is where I learned
+experience — including {{< years >}} years leading a team. Django is where I learned
 the craft; Python is the language I think in.
 
 ## How I work

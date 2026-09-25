@@ -11,7 +11,7 @@
     {{- with .Params.facts }}
     <aside class="who-facts" aria-label="Facts">
       <p class="mono prompt-sm"><span aria-hidden="true">$</span> cat facts.txt</p>
-      <dl>{{ range . }}<div><dt class="mono">{{ .label }}</dt><dd>{{ .value }}</dd></div>{{ end }}</dl>
+      <dl>{{ range . }}<div><dt class="mono">{{ .label }}</dt><dd>{{ replace .value "{leadYears}" (string (sub now.Year (int site.Params.leadSince))) }}</dd></div>{{ end }}</dl>
     </aside>
     {{- end }}
   </div>
