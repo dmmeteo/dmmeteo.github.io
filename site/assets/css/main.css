@@ -313,12 +313,26 @@ mark { background: var(--mark); color: inherit; padding: 0 .12em; }
   border: 1px solid var(--rule); box-shadow: 10px 10px 0 var(--rule); resize: both; overflow: hidden;
 }
 .win.max { inset: 76px 20px 20px 20px !important; width: auto !important; height: auto !important; resize: none; }
-.win-bar { display: flex; align-items: center; gap: 8px; padding: 0 0 0 12px; height: 36px; background: #151515; color: #f6f4ee; cursor: grab; user-select: none; touch-action: none; }
+.win-bar { position: relative; display: flex; align-items: center; gap: 10px; height: 38px; padding: 0 8px 0 14px; background: var(--paper-2); color: var(--ink); border-bottom: 1px solid var(--rule); cursor: grab; user-select: none; touch-action: none; }
 .win-bar:active { cursor: grabbing; }
-.win-title { flex: 1; font-family: var(--f-mono); font-size: 12px; letter-spacing: .03em; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.win-bar a, .win-bar button { font-family: var(--f-mono); font-size: 12px; color: #f6f4ee; background: none; border: 0; border-left: 1px solid #3a3a3a; height: 36px; padding: 0 12px; cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; }
-.win-bar a:hover, .win-bar button:hover { background: var(--mark); color: #151515; }
-.win-bar :focus-visible { outline: 2px solid var(--mark); outline-offset: -2px; }
+.win-lights { display: flex; gap: 8px; z-index: 1; }
+.win-light { width: 13px; height: 13px; padding: 0; border-radius: 50%; border: 1px solid rgb(0 0 0 / .22); cursor: pointer; display: grid; place-items: center; font: 700 10px/1 system-ui, sans-serif; color: rgb(0 0 0 / .55); }
+.win-close { background: #ff5f57; }
+.win-shade { background: #febc2e; }
+.win-max { background: #28c840; }
+.win-lights:hover .win-light::after, .win-light:focus-visible::after { display: block; }
+.win-light::after { display: none; }
+.win-close::after { content: "×"; }
+.win-shade::after { content: "−"; }
+.win-max::after { content: "+"; }
+.win-max[aria-pressed="true"]::after { content: "−"; }
+.win-light:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+.win-title { position: absolute; inset: 0 110px; display: flex; align-items: center; justify-content: center; font-family: var(--f-mono); font-size: 12px; letter-spacing: .02em; overflow: hidden; white-space: nowrap; pointer-events: none; }
+.win-title { text-overflow: ellipsis; display: block; line-height: 38px; text-align: center; }
+.win-tab { margin-left: auto; z-index: 1; display: grid; place-items: center; width: 26px; height: 26px; border: 1px solid transparent; color: var(--ink); text-decoration: none; font-size: 15px; }
+.win-tab:hover { border-color: var(--rule); background: var(--mark); color: #151515; }
+.win.shaded { height: 40px !important; min-height: 0; resize: none; }
+.win.shaded .win-body { display: none; }
 .win-body { overflow: auto; overscroll-behavior: contain; }
 .win-body .read-foot { display: none; }
 .win-body .read-head h1 { font-size: clamp(36px, 4vw, 60px); }

@@ -66,10 +66,13 @@ async function openWindow(link) {
   win._opener = link;
   win.innerHTML = `
     <div class="win-bar">
+      <div class="win-lights">
+        <button type="button" class="win-light win-close" aria-label="Close window"></button>
+        <button type="button" class="win-light win-shade" aria-label="Collapse window" aria-pressed="false"></button>
+        <button type="button" class="win-light win-max" aria-label="Maximize window" aria-pressed="false"></button>
+      </div>
       <span class="win-title"></span>
-      <a class="win-tab" href="${url}" target="_blank" rel="noopener">open in new tab ↗</a>
-      <button type="button" class="win-max" aria-pressed="false">maximize</button>
-      <button type="button" class="win-close" aria-label="Close window">close ×</button>
+      <a class="win-tab" href="${url}" target="_blank" rel="noopener" aria-label="Open in new tab" title="Open in new tab">↗</a>
     </div>
     <div class="win-body" tabindex="-1"></div>`;
   win.querySelector(".win-title").textContent = title;
@@ -87,11 +90,14 @@ async function openWindow(link) {
 
   win.addEventListener("pointerdown", () => focusWin(win));
   win.querySelector(".win-close").addEventListener("click", () => closeWin(win));
-  const max = win.querySelector(".win-max");
-  max.addEventListener("click", () => {
-    const on = win.classList.toggle("max");
-    max.setAttribute("aria-pressed", String(on));
-    max.textContent = on ? "restore" : "maximize";
+  const toggle = (sel, cls) => {
+    const btn = win.querySelector(sel);
+    btn.addEventListener("click", () => btn.setAttribute("aria-pressed", String(win.classList.toggle(cls))));
+  };
+  toggle(".win-shade", "shaded"); // yellow: roll up to the title bar
+  toggle(".win-max", "max");      // green: fill the viewport
+  win.querySelector(".win-bar").addEventListener("dblclick", (e) => {
+    if (!e.target.closest("button, a")) win.querySelector(".win-max").click();
   });
   makeDraggable(win, win.querySelector(".win-bar"));
 }

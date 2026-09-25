@@ -68,8 +68,11 @@ background, blinking caret on `$ whoami`.
 ## Windows
 
 Desktop only (≥1100px, fine pointer): feed links with `data-window` open the
-article in a draggable, resizable window with `open in new tab ↗`,
-`maximize`, `close ×`; Escape closes the top one. Things pages always open
+article in a draggable, resizable window with macOS-style lights: red closes,
+yellow rolls the window up to its title bar, green maximizes (so does a
+double-click on the bar); `↗` opens the page in a new tab. Escape closes
+the top window. Ctrl/Cmd/Shift/middle-click are never intercepted, so the
+browser opens a new tab as usual. Things pages always open
 as full pages. Mobile and no-JS use normal navigation.
 
 ## Checks
