@@ -1,0 +1,34 @@
+{{ define "bodyclass" }}log-list{{ end }}
+{{ define "main" }}
+<header class="page-head">
+  <p class="kicker mono">{{ len .RegularPages }} entries &middot; newest first</p>
+  <h1>{{ .Title }}</h1>
+  <div class="intro">{{ .Content }}</div>
+</header>
+
+<section class="feed" aria-labelledby="entries-title">
+  <h2 id="entries-title" class="visually-hidden">Entries</h2>
+  {{- $pager := .Paginate .RegularPages.ByDate.Reverse }}
+  {{- $older := "" }}{{ with $pager.Next }}{{ $older = .URL }}{{ end }}
+  {{ partial "feed.html" (dict "pages" $pager.Pages "older" $older) }}
+  {{- if $pager.HasPrev }}
+  <p class="older-wrap"><a class="mono" href="{{ $pager.Prev.URL }}">&uarr; newer entries</a></p>
+  {{- end }}
+</section>
+
+{{- if not $pager.HasPrev }}
+<section class="archive" aria-labelledby="archive-title">
+  <header class="band"><h2 id="archive-title" class="mono">archive</h2></header>
+  {{- range .RegularPages.GroupByDate "January 2006" }}
+  <div class="archive-month">
+    <h3 class="mono">{{ .Key | upper }}</h3>
+    <ul>
+      {{- range .Pages }}
+      <li><a href="{{ .RelPermalink }}">{{ partial "entry-title.html" . }}</a> <span class="mono">{{ partial "kind.html" .Params.kind }}</span></li>
+      {{- end }}
+    </ul>
+  </div>
+  {{- end }}
+</section>
+{{- end }}
+{{ end }}

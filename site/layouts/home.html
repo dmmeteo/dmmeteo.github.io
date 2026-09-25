@@ -1,30 +1,27 @@
+{{ define "bodyclass" }}home{{ end }}
 {{ define "main" }}
-  {{ partial "hero.html" . }}
+<section class="hero" aria-labelledby="hero-title">
+  <div class="hero-copy">
+    <p class="kicker mono">{{ .Params.kicker }}</p>
+    <h1 id="hero-title">{{ partial "nowidow.html" .Params.headline }}</h1>
+    <div class="hero-intro">{{ .Content }}</div>
+    {{ with .Params.aside }}<p class="aside">&mdash; {{ . }}</p>{{ end }}
+  </div>
+  <div class="hero-art">
+    {{ partial "banner.html" . }}
+    {{ partial "now.html" . }}
+  </div>
+</section>
 
-  <section id="log">
-    {{ partial "section-head.html" (dict "num" "01" "title" "LATEST BUILDER'S LOG" "sub" ("NEED &rarr; BUILD &rarr; BREAK &rarr; RECOVER &rarr; PUBLISH" | safeHTML)) }}
-    {{- $entries := where site.RegularPages "Section" "log" }}
-    {{- with first 1 $entries }}
-      {{- range . }}{{ partial "log-teaser.html" . }}{{ end }}
-    {{- else }}
-      <p class="empty">The first entry is still being written. It will land here and in the feed.</p>
-    {{- end }}
-    {{- if gt (len $entries) 1 }}
-    <p class="more"><a class="link" href="{{ "/log/" | relURL }}">All entries &rarr;</a></p>
-    {{- end }}
-  </section>
-
-  <section id="systems">
-    {{ partial "section-head.html" (dict "num" "02" "title" "THINGS THAT ACTUALLY RUN" "sub" "NOT A PORTFOLIO. AN OPERATING SURFACE.") }}
-    {{ partial "systems.html" . }}
-  </section>
-
-  <section id="contact">
-    {{ partial "section-head.html" (dict "num" "03" "title" "NOTES AND CONTACT" "sub" "") }}
-    <div class="notes">
-      <p>I publish the parts that turned out to be useful, including the ones
-      that broke first. New entries land in the
-      <a class="link" href="{{ "/log/" | relURL }}">Builder's Log</a> and in the feed.</p>
-    </div>
-  </section>
+<section class="feed" aria-labelledby="feed-title">
+  <header class="band">
+    <h2 id="feed-title" class="mono">log/ &mdash; latest</h2>
+    <a class="mono" href="{{ "/log/" | relURL }}">all entries &rarr;</a>
+  </header>
+  {{- $all := (where site.RegularPages "Section" "log").ByDate.Reverse }}
+  {{- $size := site.Params.pagerSize }}
+  {{- $older := "" }}
+  {{- if gt (len $all) $size }}{{ $older = "/log/page/2/" | relURL }}{{ end }}
+  {{ partial "feed.html" (dict "pages" (first $size $all) "older" $older) }}
+</section>
 {{ end }}

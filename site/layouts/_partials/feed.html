@@ -1,0 +1,7 @@
+{{- /* Expects dict "pages" (slice) "older" (url or "") */ -}}
+<div class="feed-list">
+  {{- range .pages }}{{ partial "entry.html" . }}{{ end }}
+</div>
+{{- with .older }}
+<p class="older-wrap"><a class="older mono" href="{{ . }}" data-older>load older &darr;</a></p>
+{{- end }}

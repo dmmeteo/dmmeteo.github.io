@@ -1,0 +1,3 @@
+{{- /* Label for an entry kind. Expects the kind string. */ -}}
+{{- $labels := dict "note" "NOTE" "log" "BUILDER'S LOG" "artifact" "ARTIFACT" "incident" "BROKE / RECOVERED" "now" "NOW BUILDING" "project" "PROJECT" "research" "RESEARCH" -}}
+{{- index $labels (. | default "log") | default (upper .) -}}

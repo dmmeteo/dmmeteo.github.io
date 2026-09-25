@@ -1,0 +1,7 @@
+{{- /* One step per line: "Actor | what happens" */ -}}
+<ol class="flow reveal">
+{{- range $i, $line := split (trim .Inner "\n ") "\n" }}{{ with trim $line " " }}
+{{- $p := split . "|" }}
+<li><span class="mono flow-n">{{ printf "%02d" (add $i 1) }}</span><strong>{{ trim (index $p 0) " " }}</strong><span>{{ trim (index $p 1) " " | $.Page.RenderString }}</span></li>
+{{- end }}{{ end }}
+</ol>

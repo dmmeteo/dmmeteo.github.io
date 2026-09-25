@@ -1,0 +1,11 @@
+{{- /* Pinned NOW: the latest "now" entry. */ -}}
+{{- $now := first 1 (where (where site.RegularPages "Section" "log") "Params.kind" "now").ByDate.Reverse }}
+{{- range $now }}
+<a class="now-box mono" href="{{ .RelPermalink }}">
+  <span class="now-label">now building</span>
+  <strong>{{ .Title }}</strong>
+  <span>status / {{ .Params.status | default "working" }}</span>
+  {{ with .Params.mood }}<span>mood / {{ . }}</span>{{ end }}
+  <span class="now-date">since {{ .Date.Format "02.01.2006" }}</span>
+</a>
+{{- end }}

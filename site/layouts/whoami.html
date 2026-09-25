@@ -1,0 +1,19 @@
+{{ define "bodyclass" }}whoami{{ end }}
+{{ define "main" }}
+<article class="who">
+  <header class="who-head">
+    <p class="prompt mono" aria-label="Terminal: whoami"><span aria-hidden="true">$</span> whoami</p>
+    <h1>dima <span class="aside">— Python engineer, Ukraine</span></h1>
+    <div class="who-art">{{ partial "banner.html" . }}</div>
+  </header>
+  <div class="who-body">
+    <div class="prose">{{ .Content }}</div>
+    {{- with .Params.facts }}
+    <aside class="who-facts" aria-label="Facts">
+      <p class="mono prompt-sm"><span aria-hidden="true">$</span> cat facts.txt</p>
+      <dl>{{ range . }}<div><dt class="mono">{{ .label }}</dt><dd>{{ .value }}</dd></div>{{ end }}</dl>
+    </aside>
+    {{- end }}
+  </div>
+</article>
+{{ end }}

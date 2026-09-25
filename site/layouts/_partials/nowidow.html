@@ -1,0 +1,7 @@
+{{- /* Keep the last three words together so a headline never ends on a lone word. */ -}}
+{{- $w := split (trim . " ") " " -}}
+{{- if gt (len $w) 4 -}}
+{{- $head := first (sub (len $w) 3) $w -}}
+{{- $tail := after (sub (len $w) 3) $w -}}
+{{- delimit $head " " }} {{ delimit $tail "\u00a0" -}}
+{{- else -}}{{ . }}{{- end -}}

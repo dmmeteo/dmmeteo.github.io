@@ -1,0 +1,7 @@
+{{- /* One stat per line: "value | label" */ -}}
+<dl class="stats reveal">
+{{- range split (trim .Inner "\n ") "\n" }}{{ with trim . " " }}
+{{- $p := split . "|" }}
+<div><dt>{{ trim (index $p 1) " " }}</dt><dd>{{ trim (index $p 0) " " }}</dd></div>
+{{- end }}{{ end }}
+</dl>

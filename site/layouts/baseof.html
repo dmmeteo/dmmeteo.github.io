@@ -1,14 +1,18 @@
 <!doctype html>
-<html lang="{{ site.Language.Locale | default "en" }}">
+<html lang="{{ site.Language.Locale | default "en" }}" data-theme="light">
 {{ partial "head.html" . }}
-<body>
+<body class="{{ block "bodyclass" . }}page{{ end }}">
 <a class="skip" href="#main">Skip to content</a>
-<div class="wrap">
+<div class="frame">
   {{ partial "header.html" . }}
   <main id="main">
     {{ block "main" . }}{{ end }}
   </main>
   {{ partial "footer.html" . }}
 </div>
+{{ with resources.Get "js/site.js" }}
+  {{ $js := . | js.Build (dict "minify" true "target" "es2020") | fingerprint "sha256" }}
+<script src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}" defer></script>
+{{ end }}
 </body>
 </html>

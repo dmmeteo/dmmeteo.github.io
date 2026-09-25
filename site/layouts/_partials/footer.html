@@ -1,8 +1,14 @@
-<footer class="foot mono">
-  <ul>
-    {{- with site.Home.OutputFormats.Get "rss" }}<li><a href="{{ .Permalink }}">RSS</a></li>{{ end }}
-    {{- with site.Params.github }}<li><a href="{{ . }}" rel="me">GITHUB</a></li>{{ end }}
-    {{- with site.Params.x }}<li><a href="{{ . }}" rel="me">X</a></li>{{ end }}
-  </ul>
-  <span>STATIC HTML &middot; NO TRACKERS &middot; DFP {{ now.Format "2006" }}</span>
+<footer class="foot">
+  <div class="foot-end">
+    {{ partial "cactus-mini.html" . }}
+    <p class="aside">That's all for now. The cactus is still dancing.</p>
+  </div>
+  <div class="foot-bar mono">
+    <ul>
+      {{- with site.Home.OutputFormats.Get "rss" }}<li><a href="{{ .Permalink }}">rss</a></li>{{ end }}
+      {{- with site.Params.github }}<li><a href="{{ . }}" rel="me">github</a></li>{{ end }}
+      {{- with site.Params.x }}<li><a href="{{ . }}" rel="me">x</a></li>{{ end }}
+    </ul>
+    <span>static html &middot; no trackers &middot; dfp {{ now.Format "2006" }}</span>
+  </div>
 </footer>

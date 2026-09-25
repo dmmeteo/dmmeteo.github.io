@@ -12,10 +12,10 @@
       "inLanguage" "en"
       "publisher" (dict "@id" (printf "%s#person" site.BaseURL)) -}}
 {{- $graph := slice $person $website -}}
-{{- if and .IsPage (eq .Section "log") -}}
+{{- if and .IsPage (in (slice "log" "things") .Section) -}}
   {{- $post := dict
-        "@type" "BlogPosting"
-        "headline" .Title
+        "@type" (cond (eq .Section "things") "TechArticle" "BlogPosting")
+        "headline" (partial "entry-title.html" .)
         "datePublished" (.Date.Format "2006-01-02")
         "author" (dict "@id" (printf "%s#person" site.BaseURL))
         "mainEntityOfPage" .Permalink -}}
