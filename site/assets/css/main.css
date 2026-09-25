@@ -111,7 +111,7 @@ mark { background: var(--mark); color: inherit; padding: 0 .12em; }
 .hero-intro p { margin: 0; font-size: clamp(18px, 1.5vw, 21px); line-height: 1.45; max-width: 34ch; }
 .hero .aside { margin: 22px 0 0; font-size: 19px; max-width: 36ch; }
 .hero-art { position: relative; display: flex; align-items: flex-end; justify-content: center; padding: 0 var(--pad); }
-.hero-art svg { width: 112%; max-width: 760px; margin-right: -6%; height: auto; color: #151515; --dfp-fill: #fffdf8; margin-bottom: -2px; }
+.hero-art svg { width: 108%; max-width: 760px; margin-right: -4%; height: auto; color: #151515; --dfp-fill: #fffdf8; margin-bottom: 18px; }
 
 .now-box {
   position: absolute; top: 28px; right: var(--pad); display: grid; gap: 2px; width: min(300px, 80%);
@@ -297,16 +297,10 @@ mark { background: var(--mark); color: inherit; padding: 0 .12em; }
 /* ---------- footer ---------- */
 .foot-end { display: flex; align-items: center; justify-content: center; gap: 14px; padding: 44px var(--pad) 36px; }
 .foot-end .aside { margin: 0; color: var(--muted); }
-.cactus-mini { width: 44px; height: auto; color: var(--ink); --dfp-stroke: 9; --dfp-fill: var(--paper); overflow: visible; }
-.cactus-mini .dfp-ln { fill: none; stroke: currentColor; stroke-width: var(--dfp-stroke); stroke-linecap: round; stroke-linejoin: round; }
-.cactus-mini .dfp-bg, .cactus-mini .dfp-cbg { fill: var(--dfp-fill); }
-.cactus-mini .dfp-dt { stroke-width: 5; }
-.cactus-mini .dfp-wg { stroke-width: 7; }
-.cactus-mini .dfp-ink, .cactus-mini .dfp-cf { fill: currentColor; }
-.cactus-mini .mini-body { transform-box: fill-box; transform-origin: 50% 100%; animation: sway 7s ease-in-out infinite; }
-.cactus-mini .dfp-wiggles { opacity: 0; animation: wig 7s linear infinite; }
+.cactus-mini { width: 40px; height: auto; color: var(--ink); overflow: visible; transform-origin: 50% 100%; animation: sway 7s ease-in-out 4s infinite; }
+.cactus-mini .mini-ink { fill: currentColor; }
+.cactus-mini .mini-fill { fill: var(--paper-2); }
 @keyframes sway { 0%, 70%, 100% { transform: rotate(0); } 74% { transform: rotate(-5deg); } 79% { transform: rotate(5deg); } 84% { transform: rotate(-5deg); } 89% { transform: rotate(3deg); } }
-@keyframes wig { 0%, 71%, 92%, 100% { opacity: 0; } 74%, 89% { opacity: 1; } }
 .foot-bar { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; padding: 14px var(--pad); border-top: 1px solid var(--rule); font-size: 12px; }
 .foot-bar ul { display: flex; gap: 18px; list-style: none; margin: 0; padding: 0; }
 .foot-bar a { color: var(--ink); }
@@ -364,7 +358,7 @@ mark { background: var(--mark); color: inherit; padding: 0 .12em; }
 
 /* Motion starts after the first paint settles, so loading stays still. */
 .hero::before, .feat-hero::before { animation-delay: 4s; }
-.hero-art #cactus-body, .hero-art .dfp-wiggles, .who-art #cactus-body, .who-art .dfp-wiggles { animation-delay: 4s; }
+.hero-art #cactus-body, .hero-art .dfp-wiggles, .hero-art .dfp-pupils, .who-art #cactus-body, .who-art .dfp-wiggles, .who-art .dfp-pupils { animation-delay: 4s; }
 
 /* Banner: the cactus dances while hovered (the SVG carries its own idle loop). */
 .hero-art #cactus:hover #cactus-body, .who-art #cactus:hover #cactus-body { animation: dfp-dance .8s ease-in-out infinite; }

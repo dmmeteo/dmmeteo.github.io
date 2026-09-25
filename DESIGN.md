@@ -42,9 +42,18 @@ Fixel Display 500 (identity, headlines; tight −0.035…−0.068em), Fixel Text
 Literata italic 400 (rare personal asides only). Self-hosted woff2, subset to
 Latin + Cyrillic; no Russian-origin faces.
 
+## Banner
+
+`site/assets/img/dima-cactus.svg` is traced with potrace from Dima's own drawing
+(`ChatGPT_Image_Sep_25_2026_10_57_51_PM.png`), not redrawn. Transparent
+background; ink uses `currentColor`, enclosed areas `--dfp-fill`; the cactus
+can be tinted with `--dfp-cactus` / `--dfp-cactus-fill`. Groups: `#dima`,
+`.dfp-pupils`, `#cactus-body`, `.dfp-wiggles`. Rebuild with
+`build_svg.py` / `build_mini.py` in `~/projects/dimaforcepush-brand/assets/trace/`.
+
 ## Motion
 
-Quiet on home: hero gradient drift (transform only), Dima blinks, the cactus
+Quiet on home: hero gradient drift (transform only), Dima blinks (pupils squash), the cactus
 dances every ~7 s and on hover; motion starts 4 s after load. Feature pages:
 scroll-revealed chapters, growing bars, reading progress — CSS scroll-driven
 animation inside `@supports`. Everything stops under
