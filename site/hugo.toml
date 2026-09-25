@@ -20,7 +20,6 @@ disableKinds = ["taxonomy", "term"]
   pagerSize = 12
 
 [params]
-  leadSince = 2021  # team lead since; whoami shows now.Year - leadSince
   description = "Dmytro Sichkar — a Python engineer in Ukraine building and self-hosting agentic systems as daily infrastructure."
   pagerSize = 12  # keep equal to pagination.pagerSize
   author = "Dmytro Sichkar"
