@@ -4,6 +4,8 @@
   <p class="kicker mono">{{ len .RegularPages }} entries &middot; newest first</p>
   <h1>{{ .Title }}</h1>
   <div class="intro">{{ .Content }}</div>
+  {{- /* Wide screens only: the log/ panel keeps the banner too. */}}
+  <div class="side-art">{{ partial "banner.html" . }}</div>
 </header>
 
 <section class="feed" aria-labelledby="entries-title">

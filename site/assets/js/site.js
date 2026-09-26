@@ -145,3 +145,36 @@ document.addEventListener("click", async (e) => {
 
 // Back/forward after "load older": the URL is a real page, so just load it.
 window.addEventListener("popstate", () => location.reload());
+
+// ---------- theme ----------
+// No stored choice = follow the system. A click stores the other theme, or
+// clears the choice when it matches the system again.
+const themeBtn = document.querySelector(".theme-toggle");
+const systemDark = window.matchMedia("(prefers-color-scheme: dark)");
+const root = document.documentElement;
+const theme = () => root.dataset.theme || (systemDark.matches ? "dark" : "light");
+
+function syncTheme() {
+  const dark = theme() === "dark";
+  themeBtn.setAttribute("aria-pressed", String(dark));
+  for (const m of document.querySelectorAll('meta[name="theme-color"]')) {
+    m.content = dark ? "#011627" : "#f6f4ee";
+  }
+}
+
+if (themeBtn) {
+  themeBtn.hidden = false;
+  syncTheme();
+  systemDark.addEventListener("change", syncTheme);
+  themeBtn.addEventListener("click", () => {
+    const next = theme() === "dark" ? "light" : "dark";
+    const system = systemDark.matches ? "dark" : "light";
+    try {
+      if (next === system) localStorage.removeItem("theme");
+      else localStorage.setItem("theme", next);
+    } catch {}
+    if (next === system) delete root.dataset.theme;
+    else root.dataset.theme = next;
+    syncTheme();
+  });
+}

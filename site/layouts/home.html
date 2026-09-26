@@ -9,7 +9,7 @@
   </div>
   <div class="hero-art">
     {{ partial "banner.html" . }}
-    {{ partial "now.html" . }}
+    {{ partial "now.html" "now-box" }}
   </div>
 </section>
 
@@ -18,6 +18,7 @@
     <h2 id="feed-title" class="mono">log/ &mdash; latest</h2>
     <a class="mono" href="{{ "/log/" | relURL }}">all entries &rarr;</a>
   </header>
+  {{ partial "now.html" "now-bar" }}
   {{- $all := (where site.RegularPages "Section" "log").ByDate.Reverse }}
   {{- $size := site.Params.pagerSize }}
   {{- $older := "" }}

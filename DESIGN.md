@@ -27,13 +27,46 @@ inspiration: typesafe.ai; house foundation: `design-foundation`.
 
 No author name or avatar on entries: single-author site.
 
-## Tokens (light theme ships; dark is prepared under `[data-theme="dark"]`)
+## Tokens
 
-paper `#f6f4ee` · reading card `#fffdf8` · ink `#151515` · muted `#5d5a55`
-(paper only) · link `#1537d6` · visited `#551a8b` · mark/selection `#ffe14d`
-· fields: lime `#d9ff62` (now), sky `#b9dfff` (artifact), coral `#ffb3a7`
-(incident), lilac `#c5b6ff` (log / project), sun `#ffd878` (research).
-Text on colored fields is always ink.
+**Light**: paper `#f6f4ee` · reading card `#fffdf8` · ink `#151515` · muted
+`#5d5a55` (paper only) · link `#1537d6` · visited `#551a8b` · mark/selection
+`#ffe14d` · fields: lime `#d9ff62` (now), sky `#b9dfff` (artifact), coral
+`#ffb3a7` (incident), lilac `#c5b6ff` (log / project), sun `#ffd878`
+(research). Text on colored fields is always ink.
+
+**Dark** (decided 2026-09-26): the design-foundation dark seed (after
+Stripe.dev night-owl), mapped role by role, not inverted. Paper `#011627` ·
+card `#0a2534` · outside `#010e1a` · ink `#c0c7d1` (10.8:1) · muted `#708da6`
+(paper/card only, ≥4.5:1) · rules and hard shadows `#5f7d97` · link `#75d1c4`
+· visited `#b39ddb` · mark/selection/focus amber `#fec97d`. Fields keep the
+light hues at OKLCH L≈.33 so ink stays ≥6.9:1: lime `#124020`, sky `#083959`,
+coral `#56241e`, lilac `#382d58`, sun `#463111`. The hero wash is its own dark
+gradient (teal → navy → violet → wine). The banner ink is `currentColor`, so
+Dima and the cactus turn light with the text.
+
+**Theme choice**: follows the system (`prefers-color-scheme`, works without
+JS). The header `◐ dark` toggle (`aria-pressed`) stores the other theme in
+`localStorage`; clicking back to the system's theme clears it. A tiny inline
+script in `<head>` applies a stored choice before the CSS, so there is no
+flash. The dark token block exists twice in `main.css` (attribute + media
+query) and the two must stay identical.
+
+## Wide screens (≥1600×760, decided 2026-09-26)
+
+The frame grows from 1440 to 2200px. The identity panel stays put and the
+content scrolls next to it:
+
+- **Home**: the hero (headline, intro, banner at the bottom) is a sticky left
+  panel, 42%; the feed scrolls on the right. NOW turns from the hero card into
+  a row above the feed, so it never covers the cactus.
+- **log/**: title and intro on the left with the banner under them; feed and
+  archive on the right.
+- **A log entry**: its colored head (kind, date, title, deck) is the left
+  panel, the text scrolls on the right.
+
+Below 760px of height the panels would crop, so shorter screens keep the
+stacked layout. The banner is sized from the space left (`cqw`/`cqh`).
 
 ## Type
 
@@ -67,7 +100,7 @@ animation inside `@supports`. Everything stops under
 
 ## Micro-details
 
-Yellow `::selection`, ink focus ring with offset, underline offset .18em and
+Yellow `::selection` (amber in dark), ink focus ring with offset (amber in dark), underline offset .18em and
 2px on hover, blue caret, ink scrollbar, current nav item on a marker
 background, blinking caret on `$ whoami`.
 
@@ -83,6 +116,15 @@ as full pages. Mobile and no-JS use normal navigation.
 
 ## Checks
 
-Lighthouse (mobile, simulated throttling), 2026-09-25 local build: home
-99/100/100/100; log 98/100/100/100; feature pages 99/100/100/100. CI smoke
+Lighthouse (mobile, simulated throttling), 2026-09-26 local build: home
+97/100/100/100; log 97–100/100/100/100; log entry 99/100/100/100. CI smoke
 check in `.github/workflows/hugo.yml`.
+
+Browser review 2026-09-26 (headless Chrome, reduced motion), both themes:
+1600×800, 1920×1000, 2560×1300 (home, log/, entries, things/, a feature page,
+whoami/), 1440×900, 390×844 with no horizontal overflow. Theme toggle: stored
+choice survives reload and clears when it matches the system again; without
+JS the system theme applies. Tab reaches the toggle with a visible ring (amber
+in dark), and Enter switches the theme. Windows, dragging, maximize, Escape and
+load older still pass at 1920. Screenshots:
+`~/projects/dimaforcepush-brand/references/review-2026-09-26/`.

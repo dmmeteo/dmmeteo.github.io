@@ -1,7 +1,9 @@
-{{- /* Pinned NOW: the latest "now" entry. */ -}}
+{{- /* Pinned NOW: the latest "now" entry. Context: its class, "now-box" (the
+     hero card) or "now-bar" (the row above the feed on wide screens). */ -}}
 {{- $now := first 1 (where (where site.RegularPages "Section" "log") "Params.kind" "now").ByDate.Reverse }}
+{{- $cls := . }}
 {{- range $now }}
-<a class="now-box mono" href="{{ .RelPermalink }}">
+<a class="{{ $cls }} mono" href="{{ .RelPermalink }}">
   <span class="now-label">now building</span>
   <strong>{{ .Title }}</strong>
   <span>status / {{ .Params.status | default "working" }}</span>
