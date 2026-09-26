@@ -371,6 +371,6 @@ mark { background: var(--mark); color: inherit; padding: 0 .12em; }
 
 /* Motion starts after the first paint settles, so loading stays still. */
 .hero::before, .feat-hero::before { animation-delay: 4s; }
-.hero-art .dfp-eye, .hero-art .dfp-read, .who-art .dfp-eye, .who-art .dfp-read { animation-delay: 4s; }
+.hero-art .dfp-eye, .hero-art .dfp-lid, .hero-art .dfp-read, .who-art .dfp-eye, .who-art .dfp-lid, .who-art .dfp-read { animation-delay: 4s; }
 .hero-art .dfp-ceyes, .who-art .dfp-ceyes { animation-delay: 1s; } /* 4 s minus half the 6 s blink cycle */
 
