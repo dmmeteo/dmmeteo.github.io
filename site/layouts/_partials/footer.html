@@ -7,7 +7,7 @@
     <ul>
       {{- with site.Home.OutputFormats.Get "rss" }}<li><a href="{{ .Permalink }}">rss</a></li>{{ end }}
       {{- with site.Params.github }}<li><a href="{{ . }}" rel="me">github</a></li>{{ end }}
-      {{- with site.Params.x }}<li><a href="{{ . }}" rel="me">x</a></li>{{ end }}
+      {{- with site.Params.x }}<li><a href="{{ . }}" rel="me">twitter</a></li>{{ end }}
     </ul>
     <span>static html &middot; no trackers &middot; dfp {{ now.Format "2006" }}</span>
   </div>

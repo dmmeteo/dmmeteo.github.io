@@ -48,9 +48,10 @@ Latin + Cyrillic; no Russian-origin faces.
 (`ChatGPT_Image_Sep_25_2026_10_57_51_PM.png`), not redrawn. **Outlines only**:
 no fills, every area is transparent; ink uses `currentColor`, the cactus
 outline can be tinted with `--dfp-cactus`. Animated parts: `.dfp-eye` (Dima's
-eye below the lid closes up to the lid and fades — a blink), `.dfp-read`
-(pupils drift right in small jumps and back, like reading), `.dfp-ceyes`
-(the cactus's eyes blink). The cactus body, pot and motion marks do not move.
+eye blinks from both sides — `.dfp-lid` drops ~60% of the opening while
+the part below it rises and fades), `.dfp-read`
+(pupils read in small jumps toward the viewer's left — his left-to-right, he faces us — and back), `.dfp-ceyes`
+(the cactus's eyes blink). The cactus body and pot do not move; its motion marks are removed.
 Rebuild with `build_svg.py` / `build_mini.py` in
 `~/projects/dimaforcepush-brand/assets/trace/`.
 
