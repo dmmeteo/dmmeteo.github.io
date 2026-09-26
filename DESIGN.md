@@ -84,12 +84,14 @@ Latin + Cyrillic; no Russian-origin faces.
 `site/assets/img/dima-cactus.svg` is traced with potrace from Dima's own drawing
 (`ChatGPT_Image_Sep_25_2026_10_57_51_PM.png`), not redrawn. **Outlines only**:
 no fills, every area is transparent; ink uses `currentColor`, the cactus
-outline can be tinted with `--dfp-cactus`. Animated parts: `.dfp-eye` (Dima's
-eye blinks from both sides — `.dfp-lid` drops ~60% of the opening while
-the part below it rises and fades), `.dfp-read`
-(pupils read in small jumps toward the viewer's left — his left-to-right, he faces us — and back), `.dfp-ceyes`
+outline can be tinted with `--dc-cactus`. Animated parts: `.dc-eye` (Dima's
+eye blinks from both sides — `.dc-lid` drops ~60% of the opening while
+the part below it rises and fades), `.dc-read`
+(pupils read in small jumps toward the viewer's left — his left-to-right, he faces us — and back), `.dc-ceyes`
 (the cactus's eyes blink). The cactus body and pot do not move; its motion marks are removed.
-Rebuild with `build_svg.py` / `build_mini.py` in
+SVG classes, ids and variables use the `dc-` prefix and must never start with
+`dfp-`: ad blockers treat `dfp-*` as DoubleClick ads and hide it (the banner
+vanished in Dia on 2026-09-26). Rebuild with `build_svg.py` / `build_mini.py` in
 `~/projects/dimaforcepush-brand/assets/trace/`.
 
 ## Motion
