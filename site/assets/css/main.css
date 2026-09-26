@@ -30,6 +30,7 @@
   --hot: #d8361b;
   --code-bg: #ebe7db;
   --pink: #f4c7d8;
+  --who-wash: linear-gradient(160deg, var(--paper) 30%, var(--sun) 100%);
   --hero-wash:
     radial-gradient(38% 46% at 78% 28%, var(--sky) 0 30%, transparent 70%),
     radial-gradient(30% 40% at 90% 86%, var(--lilac) 0 25%, transparent 70%),
@@ -51,35 +52,50 @@
 
 :root[data-theme="light"] { color-scheme: light; }
 
-/* Dark: the design-foundation dark seed (after Stripe.dev night-owl), mapped
-   role by role, not inverted. Fields are the light hues at OKLCH L .33, so ink
-   stays >= 7:1 on every one; muted is for paper only, as in light.
-   Follows the system unless the header toggle stored a choice (see head.html).
-   The two blocks must stay identical. */
+/* Dark, after the inside of typesafe.ai (its docs): near-black with a violet
+   hint, grey surfaces, one hot-pink accent. The colored fields stay bright
+   and graphic, as typesafe's chapters are, and bring the light ink back:
+   every field hue holds >= 7.6:1 with #151515. Follows the system unless
+   the header toggle stored a choice (see head.html). Both blocks below
+   (attribute + media query) must stay identical. */
 :root[data-theme="dark"] {
-  --paper: #011627; --paper-2: #0a2534; --outside: #010e1a;
-  --ink: #c0c7d1; --muted: #708da6; --rule: #5f7d97; --rule-soft: #1b3a52;
-  --link: #75d1c4; --visited: #b39ddb; --mark: #fec97d; --focus: #fec97d;
-  --lime: #124020; --sun: #463111; --lilac: #382d58; --sky: #083959; --coral: #56241e; --pink: #522338;
+  --paper: #0d0a0f; --paper-2: #1a171b; --outside: #060507;
+  --ink: #e4dfe3; --muted: #a5a0a4; --rule: #48434a; --rule-soft: #2a262b;
+  --link: #f28fd6; --visited: #c5b6ff; --mark: #e551ba; --focus: #d9ff62;
+  --lime: #d9ff62; --sun: #ffcf4d; --lilac: #b09cff; --sky: #7fd0ff; --coral: #ff8f7d; --pink: #f386a1;
   --hero-wash:
-    radial-gradient(38% 46% at 78% 28%, #0d4164 0 30%, transparent 70%),
-    radial-gradient(30% 40% at 90% 86%, #3f3463 0 25%, transparent 70%),
-    linear-gradient(118deg, #003734, #001c34 40%, #2c1f4b 72%, #44152e);
-  --hot: #ff6b57; --code-bg: #0d2b40; --term-bg: #010e1a; --term-fg: #c0c7d1; --shadow: #5f7d97;
+    radial-gradient(34% 44% at 84% 20%, rgb(229 81 186 / .5), transparent 70%),
+    radial-gradient(30% 42% at 98% 94%, rgb(44 196 180 / .45), transparent 70%),
+    radial-gradient(28% 38% at 6% 110%, rgb(217 255 98 / .22), transparent 70%),
+    #0d0a0f;
+  --who-wash: radial-gradient(40% 70% at 92% 100%, rgb(229 81 186 / .4), transparent 70%), radial-gradient(30% 50% at 70% 110%, rgb(44 196 180 / .3), transparent 70%), #0d0a0f;
+  --hot: #ff6b57; --code-bg: #1f1b20; --term-bg: #000; --term-fg: #e4dfe3; --shadow: #48434a;
   color-scheme: dark;
+}
+:root[data-theme="dark"] :is(.k-now .entry-body, .k-incident .entry-body, .k-artifact .entry-body, .read:is(.k-now, .k-incident, .k-artifact, .k-log) .read-head, .thing:not(.tone-paper), .chapter:not(.tone-paper), .feature:not(.tone-paper) .feat-hero) {
+  --ink: #151515; --muted: #3d3a36; --link: #151515; --visited: #151515; --rule: #151515; --rule-soft: rgb(0 0 0 / .18);
+  --paper: #f6f4ee; --paper-2: #fffdf8; --shadow: #151515;
+  color: var(--ink); color-scheme: light;
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-  --paper: #011627; --paper-2: #0a2534; --outside: #010e1a;
-  --ink: #c0c7d1; --muted: #708da6; --rule: #5f7d97; --rule-soft: #1b3a52;
-  --link: #75d1c4; --visited: #b39ddb; --mark: #fec97d; --focus: #fec97d;
-  --lime: #124020; --sun: #463111; --lilac: #382d58; --sky: #083959; --coral: #56241e; --pink: #522338;
+  --paper: #0d0a0f; --paper-2: #1a171b; --outside: #060507;
+  --ink: #e4dfe3; --muted: #a5a0a4; --rule: #48434a; --rule-soft: #2a262b;
+  --link: #f28fd6; --visited: #c5b6ff; --mark: #e551ba; --focus: #d9ff62;
+  --lime: #d9ff62; --sun: #ffcf4d; --lilac: #b09cff; --sky: #7fd0ff; --coral: #ff8f7d; --pink: #f386a1;
   --hero-wash:
-    radial-gradient(38% 46% at 78% 28%, #0d4164 0 30%, transparent 70%),
-    radial-gradient(30% 40% at 90% 86%, #3f3463 0 25%, transparent 70%),
-    linear-gradient(118deg, #003734, #001c34 40%, #2c1f4b 72%, #44152e);
-  --hot: #ff6b57; --code-bg: #0d2b40; --term-bg: #010e1a; --term-fg: #c0c7d1; --shadow: #5f7d97;
+    radial-gradient(34% 44% at 84% 20%, rgb(229 81 186 / .5), transparent 70%),
+    radial-gradient(30% 42% at 98% 94%, rgb(44 196 180 / .45), transparent 70%),
+    radial-gradient(28% 38% at 6% 110%, rgb(217 255 98 / .22), transparent 70%),
+    #0d0a0f;
+  --who-wash: radial-gradient(40% 70% at 92% 100%, rgb(229 81 186 / .4), transparent 70%), radial-gradient(30% 50% at 70% 110%, rgb(44 196 180 / .3), transparent 70%), #0d0a0f;
+  --hot: #ff6b57; --code-bg: #1f1b20; --term-bg: #000; --term-fg: #e4dfe3; --shadow: #48434a;
   color-scheme: dark;
+  }
+  :root:not([data-theme="light"]) :is(.k-now .entry-body, .k-incident .entry-body, .k-artifact .entry-body, .read:is(.k-now, .k-incident, .k-artifact, .k-log) .read-head, .thing:not(.tone-paper), .chapter:not(.tone-paper), .feature:not(.tone-paper) .feat-hero) {
+  --ink: #151515; --muted: #3d3a36; --link: #151515; --visited: #151515; --rule: #151515; --rule-soft: rgb(0 0 0 / .18);
+  --paper: #f6f4ee; --paper-2: #fffdf8; --shadow: #151515;
+  color: var(--ink); color-scheme: light;
   }
 }
 
@@ -313,7 +329,7 @@ mark { background: var(--mark); color: inherit; padding: 0 .12em; }
 @keyframes progress { to { transform: scaleX(1); } }
 
 /* ---------- whoami ---------- */
-.who-head { display: grid; grid-template-columns: 1fr 1fr; align-items: end; gap: 24px; padding: clamp(40px, 6vw, 80px) var(--pad) 0; border-bottom: 1px solid var(--rule); background: linear-gradient(160deg, var(--paper) 30%, var(--sun) 100%); }
+.who-head { display: grid; grid-template-columns: 1fr 1fr; align-items: end; gap: 24px; padding: clamp(40px, 6vw, 80px) var(--pad) 0; border-bottom: 1px solid var(--rule); background: var(--who-wash); }
 .prompt { font-size: clamp(16px, 1.5vw, 20px); margin: 0 0 12px; grid-column: 1; }
 .prompt::after { content: ""; display: inline-block; width: .6em; height: 1.1em; margin-left: .3em; vertical-align: -.2em; background: var(--ink); animation: caret 1.1s steps(1) infinite; }
 @keyframes caret { 50% { opacity: 0; } }

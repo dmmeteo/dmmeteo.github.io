@@ -35,15 +35,19 @@ No author name or avatar on entries: single-author site.
 `#ffb3a7` (incident), lilac `#c5b6ff` (log / project), sun `#ffd878`
 (research). Text on colored fields is always ink.
 
-**Dark** (decided 2026-09-26): the design-foundation dark seed (after
-Stripe.dev night-owl), mapped role by role, not inverted. Paper `#011627` ·
-card `#0a2534` · outside `#010e1a` · ink `#c0c7d1` (10.8:1) · muted `#708da6`
-(paper/card only, ≥4.5:1) · rules and hard shadows `#5f7d97` · link `#75d1c4`
-· visited `#b39ddb` · mark/selection/focus amber `#fec97d`. Fields keep the
-light hues at OKLCH L≈.33 so ink stays ≥6.9:1: lime `#124020`, sky `#083959`,
-coral `#56241e`, lilac `#382d58`, sun `#463111`. The hero wash is its own dark
-gradient (teal → navy → violet → wine). The banner ink is `currentColor`, so
-Dima and the cactus turn light with the text.
+**Dark** (decided 2026-09-26, revised the same day after Dima's review: "more
+black, fewer navy accents, bright graphic colors"): after the inside of
+typesafe.ai (docs.typesafe.ai in dark). Paper `#0d0a0f` (near-black, violet
+hint) · card `#1a171b` · outside `#060507` · ink `#e4dfe3` (15:1) · muted
+`#a5a0a4` (paper/card only, ≥6.9:1) · rules and hard shadows `#48434a` · link
+`#f28fd6` · visited `#c5b6ff` · mark/selection/current nav hot pink `#e551ba`
+(with `#151515` text) · focus lime `#d9ff62`. The colored fields stay bright
+and graphic, as typesafe's chapters are: lime `#d9ff62`, sky `#7fd0ff`, coral
+`#ff8f7d`, lilac `#b09cff`, sun `#ffcf4d`, pink `#f386a1`. Inside a field the
+light tokens come back (ink `#151515`, links ink and underlined), so text on
+every field is ≥7.6:1. The hero and whoami heads are black with pink, teal and
+lime glows. The first dark pass (design-foundation night-owl navy) was
+rejected as too blue.
 
 **Theme choice**: follows the system (`prefers-color-scheme`, works without
 JS). The header `◐ dark` toggle (`aria-pressed`) stores the other theme in
