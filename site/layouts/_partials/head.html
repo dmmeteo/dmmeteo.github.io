@@ -1,5 +1,7 @@
 <head>
   {{ partial "head/meta.html" . }}
+  {{- /* Before the CSS, so a stored theme applies on first paint. */}}
+  <script>try{var t=localStorage.getItem("theme");if(t=="light"||t=="dark")document.documentElement.dataset.theme=t}catch(e){}</script>
   <link rel="preload" href="{{ "fonts/FixelDisplay-Medium.woff2" | relURL }}" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="{{ "fonts/FixelText-Regular.woff2" | relURL }}" as="font" type="font/woff2" crossorigin>
   {{- /* Inlined: one less render-blocking request; ~6 KB gzipped. */}}

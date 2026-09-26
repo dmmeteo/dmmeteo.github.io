@@ -27,13 +27,50 @@ inspiration: typesafe.ai; house foundation: `design-foundation`.
 
 No author name or avatar on entries: single-author site.
 
-## Tokens (light theme ships; dark is prepared under `[data-theme="dark"]`)
+## Tokens
 
-paper `#f6f4ee` · reading card `#fffdf8` · ink `#151515` · muted `#5d5a55`
-(paper only) · link `#1537d6` · visited `#551a8b` · mark/selection `#ffe14d`
-· fields: lime `#d9ff62` (now), sky `#b9dfff` (artifact), coral `#ffb3a7`
-(incident), lilac `#c5b6ff` (log / project), sun `#ffd878` (research).
-Text on colored fields is always ink.
+**Light**: paper `#f6f4ee` · reading card `#fffdf8` · ink `#151515` · muted
+`#5d5a55` (paper only) · link `#1537d6` · visited `#551a8b` · mark/selection
+`#ffe14d` · fields: lime `#d9ff62` (now), sky `#b9dfff` (artifact), coral
+`#ffb3a7` (incident), lilac `#c5b6ff` (log / project), sun `#ffd878`
+(research). Text on colored fields is always ink.
+
+**Dark** (decided 2026-09-26, revised the same day after Dima's review: "more
+black, fewer navy accents, bright graphic colors"): after the inside of
+typesafe.ai (docs.typesafe.ai in dark). Paper `#0d0a0f` (near-black, violet
+hint) · card `#1a171b` · outside `#060507` · ink `#e4dfe3` (15:1) · muted
+`#a5a0a4` (paper/card only, ≥6.9:1) · rules and hard shadows `#48434a` · link
+`#f28fd6` · visited `#c5b6ff` · mark/selection/current nav hot pink `#e551ba`
+(with `#151515` text) · focus lime `#d9ff62`. The colored fields stay bright
+and graphic, as typesafe's chapters are: lime `#d9ff62`, sky `#7fd0ff`, coral
+`#ff8f7d`, lilac `#b09cff`, sun `#ffcf4d`, pink `#f386a1`. Inside a field the
+light tokens come back (ink `#151515`, links ink and underlined), so text on
+every field is ≥7.6:1. The hero and whoami heads are black with pink, teal and
+lime glows. The first dark pass (design-foundation night-owl navy) was
+rejected as too blue.
+
+**Theme choice**: follows the system (`prefers-color-scheme`, works without
+JS). The header `◐ dark` toggle (`aria-pressed`) stores the other theme in
+`localStorage`; clicking back to the system's theme clears it. A tiny inline
+script in `<head>` applies a stored choice before the CSS, so there is no
+flash. The dark token block exists twice in `main.css` (attribute + media
+query) and the two must stay identical.
+
+## Wide screens (≥1600×760, decided 2026-09-26)
+
+The frame grows from 1440 to 2200px. The identity panel stays put and the
+content scrolls next to it:
+
+- **Home**: the hero (headline, intro, banner at the bottom) is a sticky left
+  panel, 42%; the feed scrolls on the right. NOW turns from the hero card into
+  a row above the feed, so it never covers the cactus.
+- **log/**: title and intro on the left with the banner under them; feed and
+  archive on the right.
+- **A log entry**: its colored head (kind, date, title, deck) is the left
+  panel, the text scrolls on the right.
+
+Below 760px of height the panels would crop, so shorter screens keep the
+stacked layout. The banner is sized from the space left (`cqw`/`cqh`).
 
 ## Type
 
@@ -67,7 +104,7 @@ animation inside `@supports`. Everything stops under
 
 ## Micro-details
 
-Yellow `::selection`, ink focus ring with offset, underline offset .18em and
+Yellow `::selection` (amber in dark), ink focus ring with offset (amber in dark), underline offset .18em and
 2px on hover, blue caret, ink scrollbar, current nav item on a marker
 background, blinking caret on `$ whoami`.
 
@@ -83,6 +120,15 @@ as full pages. Mobile and no-JS use normal navigation.
 
 ## Checks
 
-Lighthouse (mobile, simulated throttling), 2026-09-25 local build: home
-99/100/100/100; log 98/100/100/100; feature pages 99/100/100/100. CI smoke
+Lighthouse (mobile, simulated throttling), 2026-09-26 local build: home
+97/100/100/100; log 97–100/100/100/100; log entry 99/100/100/100. CI smoke
 check in `.github/workflows/hugo.yml`.
+
+Browser review 2026-09-26 (headless Chrome, reduced motion), both themes:
+1600×800, 1920×1000, 2560×1300 (home, log/, entries, things/, a feature page,
+whoami/), 1440×900, 390×844 with no horizontal overflow. Theme toggle: stored
+choice survives reload and clears when it matches the system again; without
+JS the system theme applies. Tab reaches the toggle with a visible ring (amber
+in dark), and Enter switches the theme. Windows, dragging, maximize, Escape and
+load older still pass at 1920. Screenshots:
+`~/projects/dimaforcepush-brand/references/review-2026-09-26/`.

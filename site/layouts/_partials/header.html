@@ -6,5 +6,9 @@
     <a href="{{ .URL }}"{{ if $current }} aria-current="{{ cond ($.IsMenuCurrent "main" .) "page" "true" }}"{{ end }}>{{ .Name }}</a>
     {{- end }}
   </nav>
-  <span class="rev mono" aria-hidden="true">{{ site.Params.mark }}</span>
+  <div class="top-end">
+    {{- /* Shown by js/site.js; without JS the theme follows the system. */}}
+    <button class="theme-toggle mono" type="button" aria-pressed="false" hidden><span class="theme-dot" aria-hidden="true"></span>dark</button>
+    <span class="rev mono" aria-hidden="true">{{ site.Params.mark }}</span>
+  </div>
 </header>
