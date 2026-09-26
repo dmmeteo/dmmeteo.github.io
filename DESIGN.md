@@ -45,16 +45,21 @@ Latin + Cyrillic; no Russian-origin faces.
 ## Banner
 
 `site/assets/img/dima-cactus.svg` is traced with potrace from Dima's own drawing
-(`ChatGPT_Image_Sep_25_2026_10_57_51_PM.png`), not redrawn. Transparent
-background; ink uses `currentColor`, enclosed areas `--dfp-fill`; the cactus
-can be tinted with `--dfp-cactus` / `--dfp-cactus-fill`. Groups: `#dima`,
-`.dfp-pupils`, `#cactus-body`, `.dfp-wiggles`. Rebuild with
-`build_svg.py` / `build_mini.py` in `~/projects/dimaforcepush-brand/assets/trace/`.
+(`ChatGPT_Image_Sep_25_2026_10_57_51_PM.png`), not redrawn. **Outlines only**:
+no fills, every area is transparent; ink uses `currentColor`, the cactus
+outline can be tinted with `--dfp-cactus`. Animated parts: `.dfp-eye` (Dima's
+eye below the lid closes up to the lid and fades — a blink), `.dfp-read`
+(pupils drift right in small jumps and back, like reading), `.dfp-ceyes`
+(the cactus's eyes blink). The cactus body, pot and motion marks do not move.
+Rebuild with `build_svg.py` / `build_mini.py` in
+`~/projects/dimaforcepush-brand/assets/trace/`.
 
 ## Motion
 
-Quiet on home: hero gradient drift (transform only), Dima blinks (pupils squash), the cactus
-dances every ~7 s and on hover; motion starts 4 s after load. Feature pages:
+Quiet on home: hero gradient drift (transform only); Dima reads (pupils
+drift) and blinks with his eyes; the cactus blinks too, always 3 s apart from
+Dima (shared 6 s cycle, offset delays); nothing else in the banner moves.
+Motion starts after load settles. Feature pages:
 scroll-revealed chapters, growing bars, reading progress — CSS scroll-driven
 animation inside `@supports`. Everything stops under
 `prefers-reduced-motion`.
